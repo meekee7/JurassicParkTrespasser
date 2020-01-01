@@ -520,7 +520,7 @@ static rptr<CLightAmbient>	pamb;
 
 		if (prenMain && prenMain->pSettings)
 		{
-			if (prenMain->pScreenRender->seterfModify()[erfFILTER])
+			if (prenMain->pScreenRender && prenMain->pScreenRender->seterfModify()[erfFILTER])
 			{
 				if (prenMain->pSettings->seterfState[erfFILTER])
 					i_filter = 5;	// On.
