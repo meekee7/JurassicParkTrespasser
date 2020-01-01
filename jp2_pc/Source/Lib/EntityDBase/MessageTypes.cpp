@@ -281,7 +281,7 @@ extern CProfileStat psMsgSubscribe, psMoveMsgQuery;
 	//*****************************************************************************************
 	void CMessageTrigger::Queue() const
 	{
-		CMessageTrigger* pmsg_new = new(frhFrameHeap) CMessageTrigger(ptrGetActivatedTrigger());
+		CMessageTrigger* pmsg_new = new CMessageTrigger(ptrGetActivatedTrigger());
 		*pmsg_new = *this;
 		std::deque<const CMessage*> subqueue;
 		subqueue.push_back(pmsg_new);
@@ -769,7 +769,7 @@ namespace
 	//*****************************************************************************************
 	void CMessageAudio::Queue() const
 	{
-		CMessageAudio* pmsg_new = new(frhFrameHeap) CMessageAudio();
+		CMessageAudio* pmsg_new = new CMessageAudio();
 		*pmsg_new = *this;
 		std::deque<const CMessage*> subqueue;
 		subqueue.push_back(pmsg_new);
