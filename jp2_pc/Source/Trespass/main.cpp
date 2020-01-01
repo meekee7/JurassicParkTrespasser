@@ -386,8 +386,8 @@ bool ValidateDiskSpace(int iMB)
 	Trace(("%s  %s\r\n%i %i %i %i\r\n%i", szDrive, szPath,
 		dwSectorsPerCluster, dwBytesPerSector, dwFreeClusters, dwTotalClusters, dwTotalSize));
     // Check for enough free space for a save
-    if ((dwSectorsPerCluster * dwBytesPerSector * dwFreeClusters) + dwTotalSize < 
-        iMB * 1024 * 1024)
+    uint64 spaceAvailable = (dwSectorsPerCluster * dwBytesPerSector * dwFreeClusters) + uint64(dwTotalSize);
+    if (spaceAvailable < iMB * 1024 * 1024)
     {
         bRet = false;
     }
