@@ -563,7 +563,9 @@ public:
 				{
 					// Transform to polygon space.  Use cast to CVector3<>&, and special CDir3 
 					// constructor, to avoid renormalise, because our matrix is normalised.
-					rpoly.Bump.d3Light = CDir3<>((CVector3<>&)rpoly.Bump.d3Light * pi.mx3ObjToTexture(), true);
+					auto& matrix = pi.mx3ObjToTexture();
+					if (&matrix) //TODO investigate where the nullptr comes from
+						rpoly.Bump.d3Light = CDir3<>((CVector3<>&)rpoly.Bump.d3Light * matrix, true);
 					Assert(Abs(rpoly.Bump.d3Light.tZ) <= 1.0f);
 				}
 
