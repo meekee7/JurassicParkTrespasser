@@ -669,7 +669,8 @@ Cleanup:
 	if (prasMainScreen)
 	{
 		prasMainScreen->uRefs = 1;
-		delete &prasMainScreen;
+		delete prasMainScreen.ptGet();
+        prasMainScreen = rptr<CRasterWin>();
 	}
 	g_initDD.ReleaseAll();
 
