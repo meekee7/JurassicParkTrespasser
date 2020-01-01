@@ -984,7 +984,8 @@ rptr<CBumpMap> pbumpCreateUniqueBumpap
 				// the range 0..iWidth
 				i_x_src += (-i_x_src*pbump->iWidth);
 			}
-			pbang[i_x].br = pbang_src[i_x_src % pbump->iWidth].br;
+			if (pbump->iWidth != 0)
+				pbang[i_x].br = pbang_src[i_x_src % pbump->iWidth].br;
 		}
 	}
 
