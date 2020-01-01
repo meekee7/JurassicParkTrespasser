@@ -915,7 +915,7 @@ namespace
 		// this skips right to the underlying function
 		void* pv = fhInstance.pvAllocate(u_size_type+8);
 	#else
-		void* pv = new (fhInstance) uint8[u_size_type+8];
+		void* pv = new uint8[u_size_type+8];
 	#endif
 		*((uint32*)pv)	= MEM_LOG_INSTANCE_CHECKWORD;
 		*(((uint32*)pv)+1) = u_size_type;
@@ -930,7 +930,7 @@ namespace
 		// this skips right to the underlying function
 		return fhInstance.pvAllocate(u_size_type);
 	#else
-		return new (fhInstance) uint8[u_size_type];
+		return new uint8[u_size_type];
 	#endif
 #endif
 	}
