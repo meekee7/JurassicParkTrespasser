@@ -1224,8 +1224,9 @@ public:
 	//
 	//**************************************
 	{
+		return new TNode();
 		// we have allocated the last node, take drastic action
-		if (ptreeAllocator >= ptreeMaxAllocation)
+		/*if (ptreeAllocator >= ptreeMaxAllocation)
 		{
 			// if we have a fast heap allocator then we can extend the size of the original
 			// allocation upto the size of the fast heap, if the fast heap is completely
@@ -1244,7 +1245,7 @@ public:
 			AlwaysAssert(0);
 		}
 
-		return ptreeAllocator++;
+		return ptreeAllocator++;*/
 	}
 
 	//******************************************************************************************
