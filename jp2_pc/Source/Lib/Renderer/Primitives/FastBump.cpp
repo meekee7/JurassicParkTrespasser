@@ -1239,6 +1239,8 @@ void ApplyCurves(rptr<CMesh> pmsh)
 
 			// did we get a bump map from the above cast
 			Assert(pbump);
+			if (!pbumb)
+				continue;
 
 			// Make a unique raster for the segement of the bumpmap to be curved.
 			rptr<CBumpMap> pbump_new = pbumpCreateUniqueBumpap
