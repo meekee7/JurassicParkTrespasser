@@ -296,6 +296,8 @@ private:
 		return true;
 	}
 
+	static constexpr int DEBUGWINDOWMODE = 1;
+
 	//******************************************************************************************
 	//
 	void ConstructSoftware
@@ -320,11 +322,11 @@ private:
 		iWidthFront  = i_width;
 		iHeightFront = i_height;
 
-		if (i_bits) 
+		if (i_bits && !DEBUGWINDOWMODE) 
 		{		
 			// Go fullscreen.  We need to call 2 DD functions to do this.
 			DirectDraw::err = DirectDraw::pdd->SetCooperativeLevel(hwnd, 
-				DDSCL_EXCLUSIVE | DDSCL_FULLSCREEN);
+				/*DDSCL_EXCLUSIVE |*/ DDSCL_FULLSCREEN);
 			DirectDraw::err = DirectDraw::pdd->SetDisplayMode(i_width, i_height, i_bits, 0, 0);
 		}
 		else 
@@ -1767,7 +1769,7 @@ rptr<CRaster> prasReadBMP(const char* str_bitmap_name, bool b_vid)
 		CDDSize<DDSURFACEDESC2> sd;
 		HRESULT hres;
 
-		DWORD dw_flags = DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE;
+		DWORD dw_flags = DEBUGWINDOWMODE ? DDSCL_NORMAL :  DDSCL_FULLSCREEN /*| DDSCL_EXCLUSIVE*/;
 		DDDEVICEIDENTIFIER dddevid;
 		bool b_identifier_found = true;
 
