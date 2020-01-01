@@ -150,7 +150,7 @@ extern CProfileStat psPathfinder;
 		// if we are logging memory allocate 8 bytes more that required, the first DWORD  is
 		// a check value so we can verify that a freed block was allocated by this operator.
 		// The second DWORD is the size of the block so we can log memory usage.
-		void* pv = new (fhAI) uint8[u_size_type+8];
+		void* pv = new uint8[u_size_type+8];
 		*((uint32*)pv)	= MEM_LOG_INSTANCE_CHECKWORD;
 		*(((uint32*)pv)+1) = u_size_type;
 
@@ -159,7 +159,7 @@ extern CProfileStat psPathfinder;
 		// return 8 bytes after the allocated address to the caller.
 		return (void*) (((uint8*)pv)+8);
 #else
-		return new (fhAI) uint8[u_size_type];
+		return new uint8[u_size_type];
 #endif
 	}
 
