@@ -67,15 +67,11 @@ BOOL CUIManager::Attach(CUIWnd * puiwnd)
 BOOL CUIManager::Detach(CUIWnd * puiwnd)
 {
     BOOL                            bRet = FALSE;
-    std::vector<CUIWnd *>::iterator      i;
-
-    for (i = m_vUIWnd.begin(); i != m_vUIWnd.end(); i++)
-    {
-        if (puiwnd == *i)
-        {
-            bRet = TRUE;
-            m_vUIWnd.erase(i);
-        }
+    
+    auto toremove = std::remove(m_vUIWnd.begin(), m_vUIWnd.end(), puiwnd);
+    if (toremove != m_vUIWnd.end()) {
+        bRet = TRUE;
+        m_vUIWnd.erase(toremove);
     }
 
     return bRet;
