@@ -1367,7 +1367,8 @@ public:
 		: pScreenRender(psr), pSettings(pset)
 	{
 		// Also make the screen renderer point to its portion of these settings.
-		psr->pSettings = static_cast<CScreenRender::SSettings*>(pset);
+		if (psr)
+			psr->pSettings = static_cast<CScreenRender::SSettings*>(pset);
 	}
 
 	//******************************************************************************************
