@@ -10,6 +10,8 @@ jp2_pc/Template
 *.bak
 *.tmp
 
+**/DebugLog.txt
+
 # OSX Hidden Files
 .DS_Store
 ._*
