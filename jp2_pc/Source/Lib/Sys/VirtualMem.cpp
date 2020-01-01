@@ -154,7 +154,7 @@ CVirtualMem::CVirtualMem
 	AutoSetMemory();
 
 	// reserve a block of VM of the specified size
-	pu1AllocateBase = (uint8*)VirtualAlloc(NULL,u4_mem_pool,MEM_RESERVE,PAGE_READWRITE);
+	pu1AllocateBase = new uint8[u4_mem_pool];// (uint8*)VirtualAlloc(NULL, u4_mem_pool, MEM_RESERVE, PAGE_READWRITE);
 	Assert(pu1AllocateBase != NULL);
 
 	MEMLOG_ADD_COUNTER(emlVirtualPool,u4_mem_pool);
@@ -223,7 +223,10 @@ CVirtualMem::~CVirtualMem
 	// remove any committed memory
 	if (pvBase)
 	{
-		Verify( VirtualFree(pvBase, u4Length, MEM_DECOMMIT) );
+		
+		delete[] static_cast<uint8*>(pvBase);
+		pvBase = nullptr;
+		//Verify( VirtualFree(pvBase, u4Length, MEM_DECOMMIT) );
 	}
 
 	// there is no commited memory any more, and the virtual pages require no memory
