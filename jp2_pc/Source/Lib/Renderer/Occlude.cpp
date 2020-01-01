@@ -353,9 +353,9 @@ public:
 		//		if the bounding sphere is implemented as a quick test for the polyhedron.
 		//
 	#if !bUSE_NORMSPACE_ONLY
-		pbvpPolyhedron     = new(fhMemory) CBoundVolPolyhedron(paplPlanes, pav3Points);
+		pbvpPolyhedron     = new CBoundVolPolyhedron(paplPlanes, pav3Points);
 	#endif // bUSE_NORMSPACE_ONLY
-		pbvpPolyhedronNorm = new(fhMemory) CBoundVolPolyhedron(paplPlanesNorm, pav3PointsNorm);
+		pbvpPolyhedronNorm = new CBoundVolPolyhedron(paplPlanesNorm, pav3PointsNorm);
 
 		// Test everything.
 		AssertValid();
@@ -381,7 +381,7 @@ public:
 	//**********************************
 	{
 		pav3Points.uLen = ppolyPolgyon->papmvVertices.uLen;
-		pav3Points.atArray = new(fhMemory) CVector3<>[pav3Points.uLen];
+		pav3Points.atArray = new CVector3<>[pav3Points.uLen];
 
 		// Add and transform the first point.
 		int i_dest = 0;
@@ -413,7 +413,7 @@ public:
 	{
 		// Set the size of the array.
 		paplPlanes.uLen = pav3Points.uLen + 1;
-		paplPlanes.atArray = new(fhMemory) CPlane[paplPlanes.uLen];
+		paplPlanes.atArray = new CPlane[paplPlanes.uLen];
 
 		// Add the first plane.
 		paplPlanes[0] = CPlane(pav3Points[0], pav3Points[1], pav3Points[2]);
@@ -452,7 +452,7 @@ public:
 	{
 		// Set the size of the array.
 		paplPlanesNorm.uLen = pav3PointsNorm.uLen + 1;
-		paplPlanesNorm.atArray = new(fhMemory) CPlane[paplPlanesNorm.uLen];
+		paplPlanesNorm.atArray = new CPlane[paplPlanesNorm.uLen];
 
 		// Add the first plane.
 		paplPlanesNorm[0] = CPlane(pav3PointsNorm[0], pav3PointsNorm[1], pav3PointsNorm[2]);
@@ -492,7 +492,7 @@ public:
 	//**********************************
 	{
 		pav3PointsNorm.uLen = ppolyPolgyon->papmvVertices.uLen;
-		pav3PointsNorm.atArray = new(fhMemory) CVector3<>[pav3PointsNorm.uLen];
+		pav3PointsNorm.atArray = new CVector3<>[pav3PointsNorm.uLen];
 
 		// Add and transform the first point.
 		int i_dest = 0;
