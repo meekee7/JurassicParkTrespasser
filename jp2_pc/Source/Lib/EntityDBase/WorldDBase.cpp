@@ -507,7 +507,7 @@ CRenderDB*  ps_renderDB = 0;
 		// Make the default light mesh if it doesn't already exist.
 		if (!pmshLightDir)
 		{
-			pmshLightDir	= rptr_cast(CMesh, rptr_new(CMesh::fhGlobalMesh) CMeshLightDir());
+			pmshLightDir	= rptr_cast(CMesh, rptr_new CMeshLightDir());
 			MEMLOG_ADD_COUNTER(emlMeshHeap, sizeof(CMesh));
 		}
 

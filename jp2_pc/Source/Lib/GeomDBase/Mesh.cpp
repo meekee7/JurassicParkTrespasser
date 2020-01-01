@@ -578,7 +578,7 @@ uint uCreateWrapSubdivide
 //
 
 // static fast heap that all final mesh data is allocated from
-CFastHeap	CMesh::fhGlobalMesh(1 << 25);		// 32Mb
+//CFastHeap	CMesh::fhGlobalMesh(1 << 25);		// 32Mb
 
 	//******************************************************************************************
 	//
@@ -2188,7 +2188,7 @@ CFastHeap	CMesh::fhGlobalMesh(1 << 25);		// 32Mb
 	void CMesh::AllocateFinalData(CHeap& mh)
 	{
 		// Polygons.
-		pampPolygons = mh.mampPolygons.paDup( new(fhGlobalMesh) SPolygon[mh.mampPolygons.size()] );
+		pampPolygons = mh.mampPolygons.paDup( new SPolygon[mh.mampPolygons.size()] );
 		MEMLOG_ADD_COUNTER(emlMeshHeap,pampPolygons.uMemSize());
 
 		// Vertex pointers.
@@ -2198,7 +2198,7 @@ CFastHeap	CMesh::fhGlobalMesh(1 << 25);		// 32Mb
 			u_vertex_pointers += pmp->papmvVertices.uLen;
 
 		// Allocate a CMArray from the Mesh fast heap
-		CMArray<SVertex*> mapmv(u_vertex_pointers, new(fhGlobalMesh) SVertex*[u_vertex_pointers] );
+		CMArray<SVertex*> mapmv(u_vertex_pointers, new SVertex*[u_vertex_pointers] );
 		MEMLOG_ADD_COUNTER(emlMeshHeap,mapmv.uMemSize());
 
 		for (pmp = pampPolygons; pmp < pampPolygons.end(); pmp++)
@@ -2235,7 +2235,7 @@ CFastHeap	CMesh::fhGlobalMesh(1 << 25);		// 32Mb
 		}
 
 		// Allocate and transfer the vertices.
-		pamvVertices = CPArray<SVertex>(u_vertex_count, new(fhGlobalMesh) SVertex[u_vertex_count] );
+		pamvVertices = CPArray<SVertex>(u_vertex_count, new SVertex[u_vertex_count] );
 		MEMLOG_ADD_COUNTER(emlMeshHeap,pamvVertices.uMemSize());
 
 		u_vertex_count = 0;
@@ -2283,7 +2283,7 @@ CFastHeap	CMesh::fhGlobalMesh(1 << 25);		// 32Mb
 		}
 
 		// Allocate in the mesh global heap and transfer the points.
-		pav3Points = CPArray< CVector3<> >(u_point_count, new(fhGlobalMesh) CVector3<>[u_point_count] );
+		pav3Points = CPArray< CVector3<> >(u_point_count, new CVector3<>[u_point_count] );
 		MEMLOG_ADD_COUNTER(emlMeshHeap,pav3Points.uMemSize());
 
 		u_point_count = 0;
@@ -2307,11 +2307,11 @@ CFastHeap	CMesh::fhGlobalMesh(1 << 25);		// 32Mb
 		if (mh.mav3Wrap.uLen != 0)
 		{
 			// Allocate and copy the wrap.
-			pav3Wrap = mh.mav3Wrap.paDup( new(fhGlobalMesh) CVector3<>[mh.mav3Wrap.size()] );
+			pav3Wrap = mh.mav3Wrap.paDup( new CVector3<>[mh.mav3Wrap.size()] );
 		}
 
 		// Surfaces.
-		pasfSurfaces = mh.masfSurfaces.paDup( new(fhGlobalMesh) SSurface[mh.masfSurfaces.size()] );
+		pasfSurfaces = mh.masfSurfaces.paDup( new SSurface[mh.masfSurfaces.size()] );
 
 		// Remap the polygons' pointers to surfaces.
 		for (u = 0; u < pampPolygons.uLen; u++)
@@ -2421,7 +2421,7 @@ CFastHeap	CMesh::fhGlobalMesh(1 << 25);		// 32Mb
 		Assert(pampPolygons);
 
 		// Allocate a new CPArray for vertices on the fast heap
-		CPArray<SVertex> pamv(papmvVertices.uLen, new(fhGlobalMesh) SVertex[papmvVertices.uLen]);
+		CPArray<SVertex> pamv(papmvVertices.uLen, new SVertex[papmvVertices.uLen]);
 
 		//
 		// Iterate through the polygons, and create a unique entry for every vertex for every
@@ -2464,7 +2464,7 @@ CFastHeap	CMesh::fhGlobalMesh(1 << 25);		// 32Mb
 	void CMesh::MakeSurfacesUnique()
 	{
 		// Create a new surface array.
-		CPArray<SSurface> pasf(pampPolygons.uLen,new(fhGlobalMesh) SSurface[pampPolygons.uLen]);
+		CPArray<SSurface> pasf(pampPolygons.uLen,new SSurface[pampPolygons.uLen]);
 
 		// Assign each polygon its unique surface pointer.
 		for (int i = 0; i < pampPolygons.uLen; i++)
@@ -2553,7 +2553,7 @@ CFastHeap	CMesh::fhGlobalMesh(1 << 25);		// 32Mb
 
 		// Allocate the permanent array and copy the values over.
 		pav3Wrap.uLen    = 8;
-		pav3Wrap.atArray = new(fhGlobalMesh) CVector3<>[8];
+		pav3Wrap.atArray = new CVector3<>[8];
 		MEMLOG_ADD_COUNTER(emlMeshHeap, pav3Wrap.uMemSize());
 
 		// Find the min and max values.
@@ -2671,7 +2671,7 @@ CFastHeap	CMesh::fhGlobalMesh(1 << 25);		// 32Mb
 		// Copy polygon pointers to a special list.
 		//
 
-		papmpOcclude = papmp.paDup( new(fhGlobalMesh) SPolygon*[papmp.size()] );
+		papmpOcclude = papmp.paDup( new SPolygon*[papmp.size()] );
 		MEMLOG_ADD_COUNTER(emlMeshHeap,papmpOcclude.uMemSize());
 	}
 
@@ -3633,7 +3633,7 @@ uint uCreateWrap(CVector3<>* av3, uint u_num_pts)
 
 	//******************************************************************************************
 	CMeshAnimating::CMeshAnimating(CHeap& mh, ENormal enl, bool b_merge_polygons, bool b_split_polygons, bool b_curved)
-		: aptexTextures(32,new(fhGlobalMesh) rptr<CTexture>[32])
+		: aptexTextures(32,new rptr<CTexture>[32])
 	{
 		new(this) CMeshAnimating(mh, angNormalShare(enl), b_merge_polygons, b_split_polygons, b_curved);
 	}

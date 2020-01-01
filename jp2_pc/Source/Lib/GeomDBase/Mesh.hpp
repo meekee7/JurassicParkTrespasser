@@ -146,7 +146,7 @@ public:
 	//
 
 	//*****************************************************************************************
-	static CFastHeap	fhGlobalMesh;
+	//static CFastHeap	fhGlobalMesh;
 
 	//*********************************************************************************************
 	//
@@ -156,7 +156,7 @@ public:
 	//*************************************
 	{
 		// Reset the load heap and remove all committed memory!
-		fhGlobalMesh.Reset(0,0);
+		//fhGlobalMesh.Reset(0,0);
 		MEMLOG_SET_COUNTER(emlMeshHeap,0);
 	}
 
@@ -168,8 +168,9 @@ public:
 	)
 	//*************************************
 	{
-		return ( ((uint32)pv <= ((uint32)fhGlobalMesh.uNumBytesUsed() + (uint32)fhGlobalMesh.pvGetBase())) &&
-		((uint32)pv >= (uint32)fhGlobalMesh.pvGetBase()) );
+		return false; //Fast heap disabled, so nothing in it
+		//return ( ((uint32)pv <= ((uint32)fhGlobalMesh.uNumBytesUsed() + (uint32)fhGlobalMesh.pvGetBase())) &&
+		//((uint32)pv >= (uint32)fhGlobalMesh.pvGetBase()) );
 	}
 
 
@@ -179,7 +180,11 @@ public:
 	{
 		if (!bInMeshHeap(pv))
 		{
-			::delete pv;
+			::delete pv; 
+			//TODO This is highly problematic. 
+			//Deleting void* is undefined behaviour 
+			//and we might be using the wrong delete operator, 
+			//delete[] might be required.
 		}
 	}
 

@@ -1537,20 +1537,20 @@ rptr<CRenderType> CGroffIO::prdtLoadObject
 						bFILL_FLOAT(f_distance, esHeight);
 
 						//pv_mesh = new(CMesh::pvGlobalHeap) char[sizeof(CMesh)];
-						pmsh_return = rptr_cast(CMesh, rptr_new(CMesh::fhGlobalMesh) CMeshPlanted(mh_build, ::pr3Presence(*pgon), f_distance, (ENormal) i_normal_method, b_merge, b_split, b_curved));
+						pmsh_return = rptr_cast(CMesh, rptr_new CMeshPlanted(mh_build, ::pr3Presence(*pgon), f_distance, (ENormal) i_normal_method, b_merge, b_split, b_curved));
 						MEMLOG_ADD_COUNTER(emlMeshHeap, sizeof(CMeshPlanted));
 					}
 					else
 					{
 						// No.  Normal mesh.
-						pmsh_return = rptr_new(CMesh::fhGlobalMesh) CMesh(mh_build, (ENormal) i_normal_method, b_merge, b_split, b_curved);
+						pmsh_return = rptr_new CMesh(mh_build, (ENormal) i_normal_method, b_merge, b_split, b_curved);
 						MEMLOG_ADD_COUNTER(emlMeshHeap, sizeof(CMesh));
 					}
 				}
 				else
 				{
 					// Yes! Make an animating mesh.
-					rptr<CMeshAnimating> pma = rptr_new(CMesh::fhGlobalMesh) CMeshAnimating(mh_build, (ENormal) i_normal_method, b_merge, b_split, b_curved);
+					rptr<CMeshAnimating> pma = rptr_new CMeshAnimating(mh_build, (ENormal) i_normal_method, b_merge, b_split, b_curved);
 					MEMLOG_ADD_COUNTER(emlMeshHeap, sizeof(CMeshAnimating));
 					pmsh_return = rptr_cast(CMesh, pma);
 
@@ -1898,7 +1898,7 @@ rptr<CRenderType> CGroffIO::prdtLoadObject
 
 				if (b_substitutions)
 				{
-					rptr<CSubBioMesh> psbmsh_return = rptr_new(CMesh::fhGlobalMesh) CSubBioMesh
+					rptr<CSubBioMesh> psbmsh_return = rptr_new CSubBioMesh
 					(
 						mh_build,
 						patf3_joints,
@@ -2035,7 +2035,7 @@ rptr<CRenderType> CGroffIO::prdtLoadObject
 				}
 				else
 				{
-					rptr<CBioMesh> pbmsh_return = rptr_new(CMesh::fhGlobalMesh) CBioMesh
+					rptr<CBioMesh> pbmsh_return = rptr_new CBioMesh
 					(
 						mh_build,
 						patf3_joints,
