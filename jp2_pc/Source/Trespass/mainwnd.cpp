@@ -377,8 +377,8 @@ void CMainWnd::OnActivateApp(HWND hwnd, BOOL fActivate, DWORD dwThreadId)
 
 			// Delete renderer stuff if required.
             if (g_CTPassGlobals.bInGame) {
-                delete& prasMainScreen;
-                prasMainScreen = rptr<CRasterWin>(rptr_const<CRasterWin>::EExist::eEXIST, nullptr);
+                delete prasMainScreen.ptGet();
+                prasMainScreen = rptr<CRasterWin>();
             }
         }
 
