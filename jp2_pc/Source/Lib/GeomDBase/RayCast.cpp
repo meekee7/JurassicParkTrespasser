@@ -95,6 +95,7 @@
 #include "Lib/Sys/DebugConsole.hpp"
 
 #include <set>
+#include <memory>
 
 //*********************************************************************************************
 //
@@ -111,7 +112,7 @@
 	{
 #if bVER_BONES()
 		CPartitionSpaceQuery	partsqLast(CPresence3<>(), CBoundVolBox(1.0, 1.0, 1.0));
-		aptr<CRayCast>			prcLast;
+		std::shared_ptr<CRayCast>			prcLast; //TODO: Investigate: why is unique_ptr / aptr insufficient?
 #endif
 	};
 
@@ -185,7 +186,7 @@
 
 #if bVER_BONES()
 		// Copy result to static member, for physics debugging.
-		prcLast = new CRayCast(*this);
+		prcLast = std::make_shared<CRayCast>(*this);
 		partsqLast = partsq;
 #endif
 	}
@@ -193,6 +194,7 @@
 	//*****************************************************************************************
 	CRayCast::~CRayCast()
 	{
+		dout << "Deleting raycast 0x" << std::hex << this << std::dec << "\n";
 	}
 
 	//******************************************************************************************
@@ -247,7 +249,7 @@
 	{
 #if bVER_BONES()
 		// Draw the last raycast if it exists.
-		if ((const CRayCast*)prcLast)
+		if (prcLast)
 		{
 			const CBoundVolBox* pbvb = partsqLast.pbvBoundingVol()->pbvbCast();
 			if (pbvb)
