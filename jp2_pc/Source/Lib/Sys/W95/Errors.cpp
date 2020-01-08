@@ -150,8 +150,8 @@ bool bTerminalError(uint u_error_code, bool b_retry, const char * str_add_messag
 		bAutoSaveScene = false;
 
 		// Save the scene.
-		if (pwWorld)
-			pwWorld->bSaveWorld("Error.scn");
+		//if (pwWorld)
+		//	pwWorld->bSaveWorld("Error.scn");
 	}
 
     if (!bUseGDIForMessages)
