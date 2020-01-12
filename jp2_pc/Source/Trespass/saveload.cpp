@@ -54,7 +54,7 @@ void AddToLoadGameVector(SAVEGAMEINFO * psgi, std::vector<SAVEGAMEINFO> * pInfo)
     std::vector<SAVEGAMEINFO>::iterator  ppinfo;
 
     for (ppinfo = pInfo->begin(), fEntered = false; 
-         ppinfo != pInfo->end() && !fEntered; 
+         ppinfo != pInfo->end(); 
          ppinfo++)
     {
         if (CompareFileTime(&ppinfo->ft, &psgi->ft) == -1)
@@ -62,6 +62,8 @@ void AddToLoadGameVector(SAVEGAMEINFO * psgi, std::vector<SAVEGAMEINFO> * pInfo)
             fEntered = true;
             pInfo->insert(ppinfo, *psgi);
         }
+        if (fEntered)
+            break;
     }
 
     if (!fEntered)
