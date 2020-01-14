@@ -321,7 +321,7 @@ void TrespassExceptionCleanup()
 	// Remove the audio, we are about to quit.
 	delete CAudio::pcaAudio;
 
-	delete &prasMainScreen;
+	prasMainScreen = rptr0;
 
 	g_initDD.ReleaseAll();
 
@@ -669,9 +669,8 @@ Cleanup:
 	if (prasMainScreen)
 	{
 		prasMainScreen->uRefs = 1;
-		delete prasMainScreen.ptGet();
-        prasMainScreen = rptr<CRasterWin>();
-	}
+		prasMainScreen = rptr0;
+    }
 	g_initDD.ReleaseAll();
 
 	// Remove the render shell.
