@@ -326,14 +326,14 @@ private:
 		{		
 			// Go fullscreen.  We need to call 2 DD functions to do this.
 			DirectDraw::err = DirectDraw::pdd->SetCooperativeLevel(hwnd, 
-				/*DDSCL_EXCLUSIVE |*/ DDSCL_FULLSCREEN);
+				/*DDSCL_EXCLUSIVE |*/ DDSCL_FULLSCREEN | DDSCL_MULTITHREADED );
 			DirectDraw::err = DirectDraw::pdd->SetDisplayMode(i_width, i_height, i_bits, 0, 0);
 		}
 		else 
 		{			
 			// Go windowed in current screen mode.
 			// Return to Windows screen if necessary.
-			DirectDraw::err = DirectDraw::pdd->SetCooperativeLevel(hwnd, DDSCL_NORMAL);
+			DirectDraw::err = DirectDraw::pdd->SetCooperativeLevel(hwnd, DDSCL_NORMAL | DDSCL_MULTITHREADED );
 		}
 
 		// Try to construct the backbuffer in video memory.
@@ -1770,6 +1770,7 @@ rptr<CRaster> prasReadBMP(const char* str_bitmap_name, bool b_vid)
 		HRESULT hres;
 
 		DWORD dw_flags = DEBUGWINDOWMODE ? DDSCL_NORMAL :  DDSCL_FULLSCREEN /*| DDSCL_EXCLUSIVE*/;
+		dw_flags |= DDSCL_MULTITHREADED;
 		DDDEVICEIDENTIFIER dddevid;
 		bool b_identifier_found = true;
 
