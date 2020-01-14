@@ -815,7 +815,16 @@ void MyBlt(LPBYTE pbSrc,
             pbSrcBase += iSrcPitch;
         }
     }
-    else
+    else if (iSrcBytes != iDstBytes) //We cannot just memcpy when the sizes don't match
+    {
+        for (y = 0; y < iHeight; y++)
+        {
+            memcpy(pbDst, pbSrc, std::min(iWidth * iDstBytes, iWidth * iSrcBytes));
+            pbDst += iDstPitch;
+            pbSrc += iSrcPitch;
+        }
+    }
+    else 
     {
         for (y = 0; y < iHeight; y++)
         {
@@ -1205,7 +1214,7 @@ void MiddleMessage(UINT uiIDS)
             prasMainScreen->iHeightFront + 1);
 
     hr = pSurface->GetDC(&hdcSrc);
-    if (FAILED(hr))
+    if (FAILED(hr) || !hdcSrc)
     {
         return;
     }
