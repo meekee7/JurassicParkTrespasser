@@ -3736,7 +3736,10 @@ const float		lag_mult = .1;
 const float		lag_max = .003;//.001;
 int count = 0;
 			while (1) {
-
+				//Sometimes there is an endless loop we need to break out of
+				//TODO is this the correct way?
+				if (std::isnan(L) || std::isinf(L))
+					break;
 
 				if ( fabs(L) < lag_max ) break;
 
