@@ -2278,7 +2278,9 @@ SKIP_LOOP:
 				//
 				// Interpolate intensities with next row.
 				//
+#ifndef _DEBUG
 				FillIntensityMapInterp(CPArray<uint8>(i_buffer_width, pu1_buffer_1), i_y, v3_cam, d3_sun);
+#endif
 
 				// Set to the next raster line.
 				pu2 += pras->iLinePixels;
@@ -2692,6 +2694,10 @@ SKIP_LOOP:
 	//*****************************************************************************************
 	void CWaterNode::FillWaterTexture(const CCamera& cam, const CPlacement3<>& p3_cam_obj, const CDir3<>& d3_sun)
 	{
+#ifdef _DEBUG
+		if (true)
+			return;
+#endif
 		if (!bHasChildren()) 
 			CWaveNode::FillWaterTexture(cam, p3_cam_obj, d3_sun);
 		else
