@@ -129,6 +129,7 @@
 #include "Lib/View/RasterVid.hpp"
 #include "Lib/GeomDBase/Plane.hpp"
 #include "Lib\Math\FastInverse.hpp"
+#include "Lib/Std/TreeList.hpp"
 
 
 //**********************************************************************************************
@@ -415,7 +416,7 @@ public:
 												// z-sorted list.
 												// moved in the depth sort list.
 	CSortKey      keySort;						// Key value for depth sorting.
-	void*         pvNodeItMain;					// Pointer to the node iterator.
+	CTreeListNode<CSortKey, CRenderPolygon*>*         pvNodeItMain;					// Pointer to the node iterator.
 	bool          bMovedInList;					// Flag to indicate if the polygon has been moved.
 	bool          bAccept;						// Flag to accept or cull polygon.
 

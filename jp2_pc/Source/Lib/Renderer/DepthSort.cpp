@@ -569,7 +569,7 @@ public:
 		prpoly->keySort.SetKeyDown();
 
 		// Insert polygon at the front of the list.
-		prpoly->pvNodeItMain = (void*)slMain.push_front(prpoly->keySort, prpoly).pnodeCurrent;
+		prpoly->pvNodeItMain = slMain.push_front(prpoly->keySort, prpoly).pnodeCurrent;
 
 #if (iMAX_SORT_LISTS > 1)
 		for (int i = 0; i < prpoly->iNumSortLists; i++)
@@ -624,7 +624,7 @@ public:
 		Assert(prpoly);
 
 		// Insert polygon at the front of the list.
-		prpoly->pvNodeItMain = (void*)slMain.insert(prpoly->keySort, prpoly).pnodeCurrent;
+		prpoly->pvNodeItMain = slMain.insert(prpoly->keySort, prpoly).pnodeCurrent;
 
 #if (iMAX_SORT_LISTS > 1)
 		for (int i = 0; i < prpoly->iNumSortLists; i++)
@@ -1190,18 +1190,18 @@ private:
 				return;
 			case 1:
 				it = insert_fast(aprpoly[0]->keySort, aprpoly[0], it);
-				aprpoly[0]->pvNodeItMain = (void*)it.pnodeCurrent;
+				aprpoly[0]->pvNodeItMain = it.pnodeCurrent;
 				return;
 			case 2:
 				it = insert_fast(aprpoly[0]->keySort, aprpoly[0], it);
-				aprpoly[0]->pvNodeItMain = (void*)it.pnodeCurrent;
+				aprpoly[0]->pvNodeItMain = it.pnodeCurrent;
 				it = insert_fast(aprpoly[1]->keySort, aprpoly[1], it);
-				aprpoly[1]->pvNodeItMain = (void*)it.pnodeCurrent;
+				aprpoly[1]->pvNodeItMain = it.pnodeCurrent;
 				return;
 			case 3:
 				// Insert the middle node.
 				it = insert_fast(aprpoly[1]->keySort, aprpoly[1], it);
-				aprpoly[1]->pvNodeItMain = (void*)it.pnodeCurrent;
+				aprpoly[1]->pvNodeItMain = it.pnodeCurrent;
 
 				// Create new nodes from the allocator memory.
 				TNode* pnode_less    = NewNode(aprpoly[2]->keySort, aprpoly[2]);
@@ -1209,8 +1209,8 @@ private:
 				iNumNodes += 2;
 
 				// Set the main pointers.
-				aprpoly[2]->pvNodeItMain = (void*)pnode_less;
-				aprpoly[0]->pvNodeItMain = (void*)pnode_greater;
+				aprpoly[2]->pvNodeItMain = pnode_less;
+				aprpoly[0]->pvNodeItMain = pnode_greater;
 
 				// Set the parent pointers.
 				pnode_less->pnodeParent    = it.pnodeCurrent;
@@ -1227,7 +1227,7 @@ private:
 
 		// Insert in the main list.
 		it = insert_fast(aprpoly[u_mid]->keySort, aprpoly[u_mid], it);
-		aprpoly[u_mid]->pvNodeItMain = (void*)it.pnodeCurrent;
+		aprpoly[u_mid]->pvNodeItMain = it.pnodeCurrent;
 
 		// Push the array before this point.
 		PushArray(aprpoly, u_mid, it);
@@ -1245,7 +1245,7 @@ private:
 			for (uint u = 0; u < u_num; u++)
 			{
 				iterator it_new = insert(aprpoly[u]->keySort, aprpoly[u]);
-				aprpoly[u]->pvNodeItMain = (void*)it_new.pnodeCurrent;
+				aprpoly[u]->pvNodeItMain = it_new.pnodeCurrent;
 			}
 			return;
 		}
@@ -1255,7 +1255,7 @@ private:
 
 		// Insert in the main list.
 		iterator it = insert(aprpoly[u_mid]->keySort, aprpoly[u_mid]);
-		aprpoly[u_mid]->pvNodeItMain = (void*)it.pnodeCurrent;
+		aprpoly[u_mid]->pvNodeItMain = it.pnodeCurrent;
 
 		// Push the array before this point.
 		PushArray(aprpoly, u_mid, it);
@@ -1297,7 +1297,7 @@ private:
 			pnode_parent->Key			= aprpoly[i]->keySort;
 			pnode_parent->Data			= aprpoly[i];
 			pnode_parent->bSkip			= false;
-			aprpoly[i]->pvNodeItMain	= (void*)pnode_parent;
+			aprpoly[i]->pvNodeItMain	= pnode_parent;
 
 			// Greater child is at [i-1].
 			pnode_greater = AllocateNode();
@@ -1307,7 +1307,7 @@ private:
 			pnode_greater->pnodeParent	= pnode_parent;
 			pnode_greater->pnodeLess	= 0;
 			pnode_greater->pnodeGreater	= 0;
-			aprpoly[i-1]->pvNodeItMain	= (void*)pnode_greater;
+			aprpoly[i-1]->pvNodeItMain	= pnode_greater;
 
 			// Lesser child is at [i+1].
 			pnode_lesser = AllocateNode();
@@ -1317,7 +1317,7 @@ private:
 			pnode_lesser->pnodeParent	= pnode_parent;
 			pnode_lesser->pnodeLess     = 0;
 			pnode_lesser->pnodeGreater  = 0;
-			aprpoly[i+1]->pvNodeItMain	= (void*)pnode_lesser;
+			aprpoly[i+1]->pvNodeItMain	= pnode_lesser;
 
 			pnode_parent->pnodeGreater  = pnode_greater;
 			pnode_parent->pnodeLess     = pnode_lesser;
@@ -1334,7 +1334,7 @@ private:
 			pnode_parent->Key			= aprpoly[i]->keySort;
 			pnode_parent->Data			= aprpoly[i];
 			pnode_parent->bSkip			= false;
-			aprpoly[i]->pvNodeItMain	= (void*)pnode_parent;
+			aprpoly[i]->pvNodeItMain	= pnode_parent;
 
 			// Greater child is at [i-1].
 			pnode_greater = AllocateNode();
@@ -1344,7 +1344,7 @@ private:
 			pnode_greater->pnodeParent	= pnode_parent;
 			pnode_greater->pnodeLess	= 0;
 			pnode_greater->pnodeGreater	= 0;
-			aprpoly[i-1]->pvNodeItMain	= (void*)pnode_greater;
+			aprpoly[i-1]->pvNodeItMain	= pnode_greater;
 
 			pnode_parent->pnodeGreater  = pnode_greater;
 			pnode_parent->pnodeLess     = 0;
@@ -1360,7 +1360,7 @@ private:
 			pnode_parent->bSkip			= false;
 			pnode_parent->pnodeLess     = 0;
 			pnode_parent->pnodeGreater  = 0;
-			aprpoly[i-1]->pvNodeItMain	= (void*)pnode_parent;
+			aprpoly[i-1]->pvNodeItMain	= pnode_parent;
 		}
 
 		// Build higher levels.
@@ -1378,7 +1378,7 @@ private:
 				pnode_parent->Key	= aprpoly[i]->keySort;
 				pnode_parent->Data	= aprpoly[i];
 				pnode_parent->bSkip	= false;
-				aprpoly[i]->pvNodeItMain = (void*)pnode_parent;
+				aprpoly[i]->pvNodeItMain = pnode_parent;
 	
 				// Greater child is at [i-2^(level-1)].
 				pnode_greater = (TNode *)aprpoly[i - step]->pvNodeItMain;
@@ -1400,7 +1400,7 @@ private:
 				pnode_parent->Key	= aprpoly[i]->keySort;
 				pnode_parent->Data	= aprpoly[i];
 				pnode_parent->bSkip	= false;
-				aprpoly[i]->pvNodeItMain = (void*)pnode_parent;
+				aprpoly[i]->pvNodeItMain = pnode_parent;
 
 				// Greater child is at [i-2^(level-1)].
 				pnode_greater = (TNode *)aprpoly[i - step]->pvNodeItMain;
@@ -1442,7 +1442,7 @@ private:
 		pnode_parent->Key	= aprpoly[i]->keySort;
 		pnode_parent->Data	= aprpoly[i];
 		pnode_parent->bSkip	= false;
-		aprpoly[i]->pvNodeItMain = (void*)pnode_parent;
+		aprpoly[i]->pvNodeItMain = pnode_parent;
 
 		// Greater child is at [i-2^(level-1)].
 		pnode_greater = (TNode *)aprpoly[i - step]->pvNodeItMain;
