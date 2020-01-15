@@ -77,6 +77,7 @@
 #include <deque>
 #include <queue>
 #include <stack>
+#include <memory>
 
 #include "FrameHeap.hpp"
 #include "Lib/Sys/Timer.hpp"
@@ -105,8 +106,8 @@ public:
 	queue< const CMessage* >* pdqwmCurrentMessages;			// Current frame's event message queue.
 	queue< const CMessage* >* pdqwmNextMessages;			// Next frame's event message queue.
 #else
-	std::queue< std::deque<const CMessage*> >* pdqwmCurrentMessages;	// Current frame's event message queue.
-	std::queue< std::deque<const CMessage*> >* pdqwmNextMessages;		// Next frame's event message queue.
+	std::queue< std::deque<std::shared_ptr<CMessage>> >* pdqwmCurrentMessages;	// Current frame's event message queue.
+	std::queue< std::deque<std::shared_ptr<CMessage>> >* pdqwmNextMessages;		// Next frame's event message queue.
 #endif
 
 public:

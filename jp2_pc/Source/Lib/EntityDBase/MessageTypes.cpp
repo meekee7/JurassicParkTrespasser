@@ -78,6 +78,8 @@
 #include <string.h>
 #include <stdio.h>
 
+#include <memory>
+
 extern CProfileStat psMsgSubscribe, psMoveMsgQuery;
 
 
@@ -281,9 +283,9 @@ extern CProfileStat psMsgSubscribe, psMoveMsgQuery;
 	//*****************************************************************************************
 	void CMessageTrigger::Queue() const
 	{
-		CMessageTrigger* pmsg_new = new CMessageTrigger(ptrGetActivatedTrigger());
+		auto pmsg_new = std::make_shared<CMessageTrigger>(ptrGetActivatedTrigger());
 		*pmsg_new = *this;
-		std::deque<const CMessage*> subqueue;
+		std::deque<std::shared_ptr<CMessage>> subqueue;
 		subqueue.push_back(pmsg_new);
 		qmQueueMessage.pdqwmNextMessages->push(subqueue);
 	}
@@ -769,9 +771,9 @@ namespace
 	//*****************************************************************************************
 	void CMessageAudio::Queue() const
 	{
-		CMessageAudio* pmsg_new = new CMessageAudio();
+		auto pmsg_new = std::make_shared<CMessageAudio>();
 		*pmsg_new = *this;
-		std::deque<const CMessage*> subqueue;
+		std::deque<std::shared_ptr<CMessage>> subqueue;
 		subqueue.push_back(pmsg_new);
 		qmQueueMessage.pdqwmNextMessages->push(subqueue);
 	}
