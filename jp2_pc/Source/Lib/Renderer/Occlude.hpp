@@ -121,6 +121,7 @@
 #include "Lib/Sys/FastHeap.hpp"
 #include "AsmSupport.hpp"
 #include "Lib/EntityDBase/Container.hpp"
+#include <memory>
 
 
 //
@@ -220,7 +221,7 @@ private:
 	CVector3<>            v3Centre;			// Centre of the occluding object.
 
 	// Data for normalized camera space polyhedron.
-	CBoundVolPolyhedron*  pbvpPolyhedronNorm;	// Polyhedron bounding volume.
+	std::unique_ptr<CBoundVolPolyhedron>  pbvpPolyhedronNorm;	// Polyhedron bounding volume.
 	CPArray< CVector3<> > pav3PointsNorm;	// Points defining the vertices of the polyhedron.
 	CPArray<CPlane>       paplPlanesNorm;	// Planes defining the walls of the polyhedron.
 	CVector3<>            v3MinNorm;		// Minimum values for vertices.
@@ -330,7 +331,7 @@ public:
 	{
 		Assert(pbvpPolyhedronNorm);
 
-		return pbvpPolyhedronNorm;
+		return pbvpPolyhedronNorm.get();
 	}
 
 	//******************************************************************************************

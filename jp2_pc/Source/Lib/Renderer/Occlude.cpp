@@ -355,7 +355,7 @@ public:
 	#if !bUSE_NORMSPACE_ONLY
 		pbvpPolyhedron     = new CBoundVolPolyhedron(paplPlanes, pav3Points);
 	#endif // bUSE_NORMSPACE_ONLY
-		pbvpPolyhedronNorm = new CBoundVolPolyhedron(paplPlanesNorm, pav3PointsNorm);
+		pbvpPolyhedronNorm = std::make_unique<CBoundVolPolyhedron>(paplPlanesNorm, pav3PointsNorm);
 
 		// Test everything.
 		AssertValid();
