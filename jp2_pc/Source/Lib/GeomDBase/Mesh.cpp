@@ -1086,7 +1086,7 @@ uint uCreateWrapSubdivide
 		}
 		else
 		{
-			delete[] papmpOcclude.atArray;
+			//delete[] papmpOcclude.atArray;
 		}
 	}
 

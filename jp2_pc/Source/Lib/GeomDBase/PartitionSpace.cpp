@@ -249,7 +249,7 @@ inline float fSmallRandom()
 					pv_mem);
 		}
 #endif
-		delete[] static_cast<uint8*>(pv_mem);
+		//delete[] static_cast<uint8*>(pv_mem);
 	}
 
 	//*****************************************************************************************

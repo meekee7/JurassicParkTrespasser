@@ -554,7 +554,7 @@ public:
 	// Delete the memory (and all of the elements) used by the image pack list
 	void RemovePackImageVector()
 	{
-		delete pvilVirtualImageMaps;
+		//delete pvilVirtualImageMaps;
 		pvilVirtualImageMaps = NULL;
 	}
 
