@@ -2237,6 +2237,9 @@ void CAudioDaemon::AttachSoundToObject
 		asatSoundObjects[u4_index].psam = psam;
 		asatSoundObjects[u4_index].pins = pins;
 
+		if (!pins)
+			return;
+
 		CPresence3<>	p3_pres		= pins->pr3Presence();
 		// world space vectors pointing forwards and up
 		CVector3<>		v3_in		= d3YAxis * p3_pres.r3Rot;	// forward vector
