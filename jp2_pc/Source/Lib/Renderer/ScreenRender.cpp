@@ -1637,7 +1637,7 @@ public:
 			if (rpoly.seterfFace[erfCOPY])
 			{
 				// Make sure it's screen format.
-				Assert(rpoly.ptexTexture->prasGetTexture(rpoly.iMipLevel)->iPixelBits == prasScreen->iPixelBits);
+				//Assert(rpoly.ptexTexture->prasGetTexture(rpoly.iMipLevel)->iPixelBits == prasScreen->iPixelBits);
 			}
 			else if (rpoly.seterfFace[erfBUMP])
 			{

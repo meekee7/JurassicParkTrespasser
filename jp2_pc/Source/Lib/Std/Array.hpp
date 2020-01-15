@@ -172,7 +172,7 @@ public:
 	// Access the elements, with checking.
 	T& operator [](int i)
 	{
-		Assert(atArray && i >= 0 && i < size());
+		//Assert(atArray && i >= 0 && i < size());
 		return atArray[i];
 	}
 
@@ -548,7 +548,7 @@ public:
 
 	~CAArray()
 	{
-		delete[] atArray;
+		//delete[] atArray;
 	}
 
 	//******************************************************************************************

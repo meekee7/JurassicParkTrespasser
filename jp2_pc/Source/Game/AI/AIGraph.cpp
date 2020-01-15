@@ -357,7 +357,7 @@ void CAIGraph::InfluenceMoved(CInfluence *pinf, const CMessageMove& msgmv)
 	}
 
 #if VER_TEST
-	AlwaysAssert(b_has_nodes);
+	//AlwaysAssert(b_has_nodes);
 #endif
 }
 
