@@ -69,6 +69,7 @@
 #define HEADER_STD_TREELIST_HPP
 
 #include "Lib/Sys/FastHeap.hpp"
+#include <vector>
 
 #define iDATA_OFFSET (4)
 #define iNEXT_OFFSET (20)
@@ -874,10 +875,15 @@ protected:
 	reverse_iterator revitBegin;		// Iterator representing the largest tree member.
 
 	// Class variables.
+	//Old, not used any longer
 	static TNode* ptreeAllocator;		// Start allocation position in memory.
 	static TNode* ptreeMaxAllocation;	// End allocation position in memory.
 	static CFastHeap* pfhAllocator;		// The fast heap that owns the alloated memory or NULL.
 
+	//New, replacement for CFastHeap
+	static std::vector<CTreeList<K, T>::TNode> pTreeVectorHeap;
+	static typename std::vector<CTreeList<K, T>::TNode>::iterator pTreeVectorHeapIterator;
+	
 public:
 
 	int iNumNodes;						// The number of elements in the tree.
@@ -926,6 +932,10 @@ public:
 		ptreeAllocator = (TNode*)pv_allocator;
 		ptreeMaxAllocation = ptreeAllocator + u_size - 1;
 		pfhAllocator = pfh;
+
+		pTreeVectorHeap.clear(); //Deletes old elements
+		pTreeVectorHeap.resize(u_size);
+		pTreeVectorHeapIterator = pTreeVectorHeap.begin();
 	}
 
 	//******************************************************************************************
@@ -1224,7 +1234,15 @@ public:
 	//
 	//**************************************
 	{
-		return new TNode();
+		if (pTreeVectorHeap.empty() || pTreeVectorHeapIterator == pTreeVectorHeap.end()) {
+			Assert(false);
+			return nullptr;
+		}
+		
+		TNode& result = *pTreeVectorHeapIterator;
+		pTreeVectorHeapIterator++;
+		return &result;
+		//return new TNode();
 		// we have allocated the last node, take drastic action
 		/*if (ptreeAllocator >= ptreeMaxAllocation)
 		{
@@ -1290,6 +1308,7 @@ public:
 template<class K, class T> typename CTreeList<K, T>::TNode* CTreeList<K, T>::ptreeAllocator;
 template<class K, class T> typename CTreeList<K, T>::TNode* CTreeList<K, T>::ptreeMaxAllocation;
 template<class K, class T> CFastHeap* CTreeList<K, T>::pfhAllocator;
-
+template<class K, class T> std::vector<typename CTreeList<K, T>::TNode> CTreeList<K, T>::pTreeVectorHeap;
+template<class K, class T> typename std::vector<typename CTreeList<K, T>::TNode>::iterator CTreeList<K, T>::pTreeVectorHeapIterator;
 
 #endif // HEADER_STD_TREELIST_HPP
