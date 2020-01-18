@@ -103,6 +103,7 @@
       <PrecompiledHeader />
       <ObjectFileName>.\Build\Final\QuantizerTool\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final\QuantizerTool\</ProgramDataBaseFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -142,6 +143,7 @@
       <PrecompiledHeader />
       <ObjectFileName>.\Build\Release\QuantizerTool\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Release\QuantizerTool\</ProgramDataBaseFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -183,6 +185,7 @@
       <ObjectFileName>.\Build\Debug\QuantizerTool\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Debug\QuantizerTool\</ProgramDataBaseFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -210,6 +213,7 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

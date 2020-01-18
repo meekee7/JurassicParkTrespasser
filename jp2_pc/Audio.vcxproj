@@ -120,6 +120,7 @@
       <ObjectFileName>.\Build\Release\Audio\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Release\Audio\</ProgramDataBaseFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -150,6 +151,7 @@
       <ObjectFileName>.\Build\Final\Audio\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final\Audio\</ProgramDataBaseFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -180,6 +182,7 @@
       <ObjectFileName>.\Build\Final_P6\Audio\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final_P6\Audio\</ProgramDataBaseFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -209,6 +212,7 @@
       <ObjectFileName>.\Build\Debug\Audio\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Debug\Audio\</ProgramDataBaseFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -225,6 +229,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

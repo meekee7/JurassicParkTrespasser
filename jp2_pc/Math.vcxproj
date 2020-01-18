@@ -120,6 +120,7 @@
       <ProgramDataBaseFileName>.\Build\Debug\Math\</ProgramDataBaseFileName>
       <AdditionalOptions> /GM </AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -150,6 +151,7 @@
       <ObjectFileName>.\Build\Final\Math\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final\Math\</ProgramDataBaseFileName>
       <AdditionalOptions> /GM </AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -180,6 +182,7 @@
       <ObjectFileName>.\Build\Final_P6\Math\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final_P6\Math\</ProgramDataBaseFileName>
       <AdditionalOptions> /GM </AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -210,6 +213,7 @@
       <ObjectFileName>.\Build\Release\Math\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Release\Math\</ProgramDataBaseFileName>
       <AdditionalOptions> /GM </AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -226,6 +230,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

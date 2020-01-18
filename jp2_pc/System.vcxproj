@@ -119,6 +119,7 @@
       <PrecompiledHeaderOutputFile>.\Build\Final_P6\System\System.pch</PrecompiledHeaderOutputFile>
       <ObjectFileName>.\Build\Final_P6\System\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final_P6\System\</ProgramDataBaseFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -148,6 +149,7 @@
       <PrecompiledHeaderOutputFile>.\Build\Release\System\System.pch</PrecompiledHeaderOutputFile>
       <ObjectFileName>.\Build\Release\System\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Release\System\</ProgramDataBaseFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -177,6 +179,7 @@
       <PrecompiledHeaderOutputFile>.\Build\Final\System\System.pch</PrecompiledHeaderOutputFile>
       <ObjectFileName>.\Build\Final\System\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final\System\</ProgramDataBaseFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -206,6 +209,7 @@
       <ObjectFileName>.\Build\Debug\System\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Debug\System\</ProgramDataBaseFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -222,6 +226,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

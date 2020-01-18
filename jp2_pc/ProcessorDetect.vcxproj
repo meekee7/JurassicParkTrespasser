@@ -79,6 +79,7 @@
       <PrecompiledHeaderOutputFile>.\Build\Release\ProcessorDetect\ProcessorDetect.pch</PrecompiledHeaderOutputFile>
       <ObjectFileName>.\Build\Release\ProcessorDetect\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Release\ProcessorDetect\</ProgramDataBaseFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -120,6 +121,7 @@
       <ObjectFileName>.\Build\Debug\ProcessorDetect\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Debug\ProcessorDetect\</ProgramDataBaseFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -149,6 +151,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

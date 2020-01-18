@@ -98,6 +98,7 @@
       <PrecompiledHeaderOutputFile>.\build\release\GroffBuild\GroffBuild.pch</PrecompiledHeaderOutputFile>
       <ObjectFileName>.\build\release\GroffBuild\</ObjectFileName>
       <ProgramDataBaseFileName>.\build\release\GroffBuild\</ProgramDataBaseFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -137,6 +138,7 @@
       <ObjectFileName>.\build\debug\GroffBuild\</ObjectFileName>
       <ProgramDataBaseFileName>.\build\debug\GroffBuild\</ProgramDataBaseFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -177,6 +179,7 @@
       <PrecompiledHeaderOutputFile>.\GroffBuild\Final\GroffBuild.pch</PrecompiledHeaderOutputFile>
       <ObjectFileName>.\GroffBuild\Final\</ObjectFileName>
       <ProgramDataBaseFileName>.\GroffBuild\Final\</ProgramDataBaseFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -203,6 +206,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

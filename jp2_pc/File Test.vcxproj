@@ -62,6 +62,7 @@
       <ObjectFileName>.\Build\Debug\File Test\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Debug\File Test\</ProgramDataBaseFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Midl>
       <TypeLibraryName>.\Build\Debug\File Test\File Test.tlb</TypeLibraryName>
@@ -85,6 +86,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

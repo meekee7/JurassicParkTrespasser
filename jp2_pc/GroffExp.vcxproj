@@ -103,6 +103,7 @@
       <ObjectFileName>.\Build\GroffExp\Release\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\GroffExp\Release\</ProgramDataBaseFileName>
       <AdditionalOptions> /I /Jp2_pc/Source/Tools/GroffExp" /I /jp2_pc/Inc/MaxSDK" /I /jp2_pc/Source" /I /jp2_pc/Source/Tools/GroffExp" " " " "</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -148,6 +149,7 @@
       <ProgramDataBaseFileName>.\Build\GroffExp\Debug\</ProgramDataBaseFileName>
       <AdditionalOptions> /I /Jp2_pc/Source/Tools/GroffExp" /I /jp2_pc/Inc/MaxSDK" /I /jp2_pc/Source" /I /jp2_pc/Source/Tools/GroffExp" " " " "</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -193,6 +195,7 @@
       <ObjectFileName>.\Build\GroffExp\Final\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\GroffExp\Final\</ProgramDataBaseFileName>
       <AdditionalOptions> /I /Jp2_pc/Source/Tools/GroffExp" /I /jp2_pc/Inc/MaxSDK" /I /jp2_pc/Source" /I /jp2_pc/Source/Tools/GroffExp" " " " "</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -223,6 +226,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
