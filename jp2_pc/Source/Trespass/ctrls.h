@@ -365,8 +365,8 @@ public:
     virtual void    SetPalette(HPALETTE hpal);
     virtual void    SetPalette(LOGPALETTE * plogpal);
 
-    virtual LPSTR   GetText() { return m_pszText;}
-    virtual BOOL    SetText(LPSTR psz);
+    virtual LPCSTR   GetText() { return m_pszText.c_str();}
+    virtual BOOL    SetText(LPCSTR psz);
 
     virtual COLORREF GetBkColor() { return m_crBkColor; }
     virtual void     SetBkColor(COLORREF cr) { m_crBkColor = cr; m_pParent->CtrlInvalidateRect(&m_rc); m_bUpdate = TRUE;}
@@ -398,7 +398,7 @@ public:
 private:
     CRasterDC *     m_pras;
     BOOL            m_bUpdate;
-    LPSTR           m_pszText;
+    std::string           m_pszText;
     COLORREF        m_crBkColor;
     COLORREF        m_crFGColor;
     COLORREF        m_crBackLit;

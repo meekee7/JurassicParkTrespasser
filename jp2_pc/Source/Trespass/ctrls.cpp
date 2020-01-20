@@ -1912,7 +1912,6 @@ CUITextbox::CUITextbox(CUICtrlCallback * pParent) :
     CUICtrl(pParent)
 {
     m_bUpdate = TRUE;
-    m_pszText = NULL;
     m_pras = NULL;
     m_crBkColor = RGB(0, 0, 0);
     m_crFGColor = RGB(255, 255, 255);
@@ -1929,7 +1928,6 @@ CUITextbox::CUITextbox(CUICtrlCallback * pParent) :
 
 CUITextbox::~CUITextbox()
 {
-    delete m_pszText;
     delete m_pras;
     DeleteFont(m_hfont);
 }
@@ -2035,7 +2033,7 @@ void CUITextbox::Update()
 
         rcInner = rc;
         iHeight = DrawTextEx(hdc, 
-                             m_pszText, 
+                             m_pszText.data(), 
                              -1, 
                              &rcInner, 
                              m_dwDTFormat | DT_CALCRECT, 
@@ -2050,12 +2048,12 @@ void CUITextbox::Update()
         SetTextColor(hdc, m_crBackLit);
         rcBackLit = rc;
         OffsetRect(&rcBackLit, m_bBackLitOffset, m_bBackLitOffset);
-        DrawTextEx(hdc, m_pszText, -1, &rcBackLit, m_dwDTFormat, NULL);
+        DrawTextEx(hdc, m_pszText.data(), -1, &rcBackLit, m_dwDTFormat, NULL);
     }
 
     // Draw FG Text
     SetTextColor(hdc, m_crFGColor);
-    DrawTextEx(hdc, m_pszText, -1, &rc, m_dwDTFormat, NULL);
+    DrawTextEx(hdc, m_pszText.data(), -1, &rc, m_dwDTFormat, NULL);
 
     SelectFont(hdc, hfontOld);
 
@@ -2152,24 +2150,14 @@ void CUITextbox::Draw(CRaster * pRaster, RECT * prcClip)
 
 
 
-BOOL CUITextbox::SetText(LPSTR pszNew)
+BOOL CUITextbox::SetText(LPCSTR pszNew)
 {
+    if (pszNew && pszNew[0] == char(-35))
+        puts("BReaK HERE");
+	
     BOOL        bRet;
-    LPSTR       psz;
 
-    psz = (LPSTR)new BYTE[strlen(pszNew) + 1];
-    if (psz == NULL)
-    {
-        TraceError(("CUITextbox::SetText() -- OOM -- "
-                    "unable to set new text"));
-        goto Error;
-    }
-
-    strcpy(psz, pszNew);
-
-    delete m_pszText;
-
-    m_pszText = psz;
+	m_pszText = std::string(pszNew);
 
     bRet = TRUE;
     m_bUpdate = TRUE;
