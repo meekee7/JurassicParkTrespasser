@@ -126,7 +126,7 @@ CTPassGlobals::CTPassGlobals()
 	bInGame = false;
 	bHardReset = false;
 
-    for (i = 0; i < 14; i++)
+    for (i = 0; i < 12; i++)
     {
         m_apsamRandoms[i] = NULL;
     }
@@ -397,7 +397,8 @@ int CTPassGlobals::LoadScene(LPSTR pszScene, LPSTR pszOrigSCN)
         g_u4NotifyParam = 0;
     }
 
-    (g_pfnWorldLoadNotify)(g_u4NotifyParam, 6, 0, 0);
+	if (g_pfnWorldLoadNotify)
+		(g_pfnWorldLoadNotify)(g_u4NotifyParam, 6, 0, 0);
 
     // Loads the scene.  If a reset is required, this function handles it.
 	iRet = wWorld.bLoadScene(pszScene, 
