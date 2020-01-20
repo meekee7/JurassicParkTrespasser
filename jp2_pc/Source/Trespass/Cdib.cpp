@@ -286,7 +286,7 @@ Error:
     Trace(("ERROR:  CDib::Create"));
     if (pdib != NULL)
     {
-        delete pdib;
+        delete[] pdib;
     }
     bRet = FALSE;
     goto Cleanup;
