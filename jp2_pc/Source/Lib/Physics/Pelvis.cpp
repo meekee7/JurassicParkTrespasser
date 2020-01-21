@@ -1161,7 +1161,11 @@ int				count_dracula = 0;
 
 				while (1) 
 				{
-
+					//Sometimes there is an endless loop we need to break out of
+					//TODO is this the correct way?
+					if (std::isnan(L) || std::isinf(L))
+						break;
+					
 					if ( fabs(L) < lag_max ) break;
 					count_dracula++;
 
