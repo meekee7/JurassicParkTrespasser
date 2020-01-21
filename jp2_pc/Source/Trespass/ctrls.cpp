@@ -2023,6 +2023,8 @@ void CUITextbox::Update()
         DrawEdge(hdc, &rc, EDGE_SUNKEN, BF_RECT | BF_ADJUST);
     }
 
+    LPSTR text = const_cast<LPSTR>(m_pszText.data()); //TODO data has a non-const overload. Why does it not activate in FinalP6 config?
+
     // If we want VCenter and it is not single line. 
     // (DrawTextEx does not support this)  We need to calculate
     // the actual rect ourselves
@@ -2033,7 +2035,7 @@ void CUITextbox::Update()
 
         rcInner = rc;
         iHeight = DrawTextEx(hdc, 
-                             m_pszText.data(), 
+                             text, 
                              -1, 
                              &rcInner, 
                              m_dwDTFormat | DT_CALCRECT, 
@@ -2048,12 +2050,12 @@ void CUITextbox::Update()
         SetTextColor(hdc, m_crBackLit);
         rcBackLit = rc;
         OffsetRect(&rcBackLit, m_bBackLitOffset, m_bBackLitOffset);
-        DrawTextEx(hdc, m_pszText.data(), -1, &rcBackLit, m_dwDTFormat, NULL);
+        DrawTextEx(hdc, text, -1, &rcBackLit, m_dwDTFormat, NULL);
     }
 
     // Draw FG Text
     SetTextColor(hdc, m_crFGColor);
-    DrawTextEx(hdc, m_pszText.data(), -1, &rc, m_dwDTFormat, NULL);
+    DrawTextEx(hdc, text, -1, &rc, m_dwDTFormat, NULL);
 
     SelectFont(hdc, hfontOld);
 
