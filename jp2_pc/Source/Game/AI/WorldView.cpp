@@ -367,54 +367,48 @@ void CWorldView::RemoveSomeInfluences()
 							// unimportant enough, go ahead.
 
 	// If we have a bunch of influences, remove one.
-	CInfluenceList::iterator pinf_lowest = inflInfluences.end();
-	CInfluenceList::iterator pinf = inflInfluences.begin();
-
+	CInstance* pins_lowest = nullptr;
+	
 	int i_discardable_count = 0;
-	std::list<const CInfluence*> lpinf_discard;
+	std::list<CInstance*> lpins_discard;
 
 	// Find the lamest influence and remove it.
 	// For now, we only remove one bad apple each cycle.
-	for (; pinf != inflInfluences.end(); pinf++)
+	for (auto& pinf : inflInfluences)
 	{
-		TReal r_importance = (*pinf).rImportance;
+		TReal r_importance = pinf.rImportance;
 		
-		if (gaiSystem.sNow - (*pinf).sLastSeen > paniOwner->pbrBrain->sForgetInfluence)
+		if (gaiSystem.sNow - pinf.sLastSeen > paniOwner->pbrBrain->sForgetInfluence)
 		{
 			// It's been a while.  Forget me, please.
-			((CInfluence*)&(*pinf))->setFlags[eifIS_DISCARDABLE] = true;
+			const_cast<CInfluence&>(pinf).setFlags[eifIS_DISCARDABLE] = true;
 		}
 		else if ( r_importance < r_lowest)
 		{
 			r_lowest = r_importance;
-			pinf_lowest = pinf;
+			pins_lowest = pinf.pinsTarget;
 		}
 
-		if ((*pinf).setFlags[eifIS_DISCARDABLE])
+		if (pinf.setFlags[eifIS_DISCARDABLE])
 		{
 			// Add to discard list!
-			lpinf_discard.push_back(&(*pinf));
+			lpins_discard.push_back(pinf.pinsTarget);
 			++i_discardable_count;
 		}
 	}
 
-	if (pinf_lowest != inflInfluences.end())
+	if (pins_lowest)
 	{	
 		// Add to discard list!
-		lpinf_discard.push_back(&(*pinf_lowest));
-		((CInfluence*)&(*pinf_lowest))->setFlags[eifIS_DISCARDABLE] = true;
+		lpins_discard.push_back(pins_lowest);
 	}
 
 	if (i_discardable_count > 10)
 	{
-		std::list<const CInfluence*>::iterator itpinf;
-		for(itpinf = lpinf_discard.begin(); itpinf != lpinf_discard.end(); ++itpinf)
+		for(auto& itpins : lpins_discard)
 		{
-			//   Is it discardable?
-			Assert((*itpinf)->setFlags[eifIS_DISCARDABLE]);
-
 			// Discard it.
-			bRemoveInfluence((*itpinf)->pinsTarget);
+			bRemoveInfluence(itpins);
 		}
 	}
 }
