@@ -249,6 +249,12 @@ public:
 		Assert(ppartPartition);
 	}
 
+	COcclude::~COcclude()
+	{
+		delete[] paplPlanesNorm.atArray;
+		delete[] pav3PointsNorm.atArray;
+	}
+
 	//******************************************************************************************
 	//
 	// Member functions.
@@ -450,6 +456,8 @@ public:
 	//
 	//**********************************
 	{
+		delete[] paplPlanesNorm.atArray;
+
 		// Set the size of the array.
 		paplPlanesNorm.uLen = pav3PointsNorm.uLen + 1;
 		paplPlanesNorm.atArray = new CPlane[paplPlanesNorm.uLen];
@@ -491,6 +499,8 @@ public:
 	//
 	//**********************************
 	{
+		delete[] pav3PointsNorm.atArray;
+		
 		pav3PointsNorm.uLen = ppolyPolgyon->papmvVertices.uLen;
 		pav3PointsNorm.atArray = new CVector3<>[pav3PointsNorm.uLen];
 
