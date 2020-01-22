@@ -213,7 +213,7 @@ inline float fSmallRandom()
 	//
 	
 	//*****************************************************************************************
-	void* CPartitionSpace::operator new(uint  u_size_type)
+	/*void* CPartitionSpace::operator new(uint  u_size_type)
 	{
 #ifdef LOG_MEM
 
@@ -231,10 +231,10 @@ inline float fSmallRandom()
 #else
 		return new uint8[u_size_type];
 #endif
-	}
+	}*/
 
 	//*****************************************************************************************
-	void CPartitionSpace::operator delete(void *pv_mem)
+	/*void CPartitionSpace::operator delete(void *pv_mem)
 	{
 #ifdef LOG_MEM
 		uint32*	pu4 = (uint32*) (((uint8*)pv_mem)-8);
@@ -250,7 +250,7 @@ inline float fSmallRandom()
 		}
 #endif
 		//delete[] static_cast<uint8*>(pv_mem);
-	}
+	}*/
 
 	//*****************************************************************************************
 	void CPartitionSpace::ResetHeap()

@@ -204,10 +204,10 @@ public:
 
 	//*****************************************************************************************
 	//
-	void* operator new
+	/*void* operator new
 	(
 		uint  u_size_type	// Amount of memory to allocate in bytes.
-	);
+	);*/
 	//
 	// Returns pointer to memory allocated from the next position in the heap.
 	//
@@ -215,10 +215,10 @@ public:
 
 	//*****************************************************************************************
 	//
-	void operator delete
+	/*void operator delete
 	(
 		void *pv_mem
-	);
+	);*/
 	//
 	// Calls the destructor on the object.
 	//
