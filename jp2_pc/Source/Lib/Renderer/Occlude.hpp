@@ -249,11 +249,7 @@ public:
 	// Copy constructor.
 	COcclude(const COcclude& oc);
 
-	~COcclude()
-	{
-		//delete[] paplPlanesNorm.atArray;
-		//delete[] pav3PointsNorm.atArray;
-	}
+	~COcclude();
 
 	//******************************************************************************************
 	//
