@@ -143,7 +143,7 @@ extern CProfileStat psPathfinder;
 
 
 	//*****************************************************************************************
-	void* CActivity::operator new(uint  u_size_type)
+	/*void* CActivity::operator new(uint  u_size_type)
 	{
 #ifdef LOG_MEM
 
@@ -161,7 +161,7 @@ extern CProfileStat psPathfinder;
 #else
 		return new uint8[u_size_type];
 #endif
-	}
+	}*/
 
 
 #if VER_TEST
