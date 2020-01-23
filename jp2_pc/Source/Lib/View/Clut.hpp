@@ -354,7 +354,7 @@ class CClut: public CClu
 private:
 	static EClutState ecsClutState;	// The pixel output format of the clut.
 
-	void* aTable;			// The colour lookup table in screen format.
+	char* aTable;			// The colour lookup table in screen format.
 	void* aTableD3DTrans;	// The colour lookup table in D3D transparent texture format.
 	int   iSizeofPixel;		// The number of bytes in the destination pixels.
 	int   iShiftRamp;		// The number of bits to shift the ramp value by to get an index
@@ -516,6 +516,9 @@ public:
 	//
 	//**********************************
 	{
+		delete[] aTable;
+		delete[] aTableD3DTrans;
+		delete[] ad3dtTable;
 		new(this) CClut(clu, ppalPalette, pxf_dest);
 	}
 
