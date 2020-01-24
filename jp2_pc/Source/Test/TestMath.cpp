@@ -59,6 +59,7 @@
 #include "Shell/AppShell.hpp"
 #include "TestMath.hpp"
 #include "Lib/Sys/ConIo.hpp"
+#include "Lib/EntityDBase/WorldDBase.hpp"
 
 #define iREFRESH_TIME	100
 #define fRANGE_MIN		.005f
@@ -186,3 +187,19 @@ public:
 
 
 CAppShell* pappMain = new CAppShellTestMath;
+
+
+//Various stuff needed to make the linker happy
+bool        bUseOutputFiles = FALSE;
+bool        bUseReplayFile = TRUE;
+//bool		g_bRestartWithRenderDlg = FALSE;
+bool        bIsTrespasser = false;
+bool		bInvertMouse = false;
+uint32 g_u4NotifyParam = 0;
+
+uint32 u4LookupResourceString(int32 i4_id, char* str_buf, uint32 u4_buf_len)
+{
+	return 0;
+}
+
+PFNWORLDLOADNOTIFY          g_pfnWorldLoadNotify;

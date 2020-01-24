@@ -84,7 +84,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OutputFile>.\Build\Debug\Test\MathTest.exe</OutputFile>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>lz32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
@@ -110,9 +110,21 @@
       <Project>{d41b324f-94a2-44a6-b0fa-dcee82ab847c}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="Audio.vcxproj">
+      <Project>{d09bdd7b-8d8f-4530-a918-92056d4b6cb4}</Project>
+    </ProjectReference>
     <ProjectReference Include="EntityDBase.vcxproj">
       <Project>{7f27c481-33ec-423f-a8c8-37c7849ac154}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="File.vcxproj">
+      <Project>{4434dcf3-4785-463a-a12f-535bcbbde683}</Project>
+    </ProjectReference>
+    <ProjectReference Include="Game.vcxproj">
+      <Project>{046046a6-f8d3-49c8-a94d-a525ea0ca3f8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="GeomDBase.vcxproj">
+      <Project>{92972835-fb0e-4625-9f85-fca159f72e21}</Project>
     </ProjectReference>
     <ProjectReference Include="Loader.vcxproj">
       <Project>{0b037087-835c-4779-9610-e1022c933d9d}</Project>
@@ -141,6 +153,9 @@
     <ProjectReference Include="System.vcxproj">
       <Project>{6f4de09b-a076-4f88-9096-09af50f99d6c}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="View.vcxproj">
+      <Project>{aff8dd1b-fe2c-41ee-ad7b-6f98ba327ef4}</Project>
     </ProjectReference>
     <ProjectReference Include="WinShell.vcxproj">
       <Project>{0f1fde21-edc6-45c7-8e74-6a52ab8d484c}</Project>
