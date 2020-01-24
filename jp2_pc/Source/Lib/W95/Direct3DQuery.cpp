@@ -138,9 +138,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <Windows.h>
-#include <DirectX/DDraw.h>
+#include <DDraw.h>
 #define D3D_OVERLOADS
-#include <DirectX/d3d.h>
+#include <d3d.h>
 #include "Common.hpp"
 #include "Direct3DQuery.hpp"
 

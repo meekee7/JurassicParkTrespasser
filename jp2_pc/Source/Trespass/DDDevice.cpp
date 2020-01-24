@@ -118,9 +118,9 @@
 #include "../Lib/Sys/Reg.h"
 
 #if (1)
-	#include "DirectX/ddraw.h"
+	#include "ddraw.h"
 	#define D3D_OVERLOADS
-	#include "DirectX/d3d.h"
+	#include "d3d.h"
 #endif
 
 #include "Lib/Sys/DebugConsole.hpp"
