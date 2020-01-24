@@ -83,7 +83,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OutputFile>.\Build\Debug\Test\PhysicsTest.exe</OutputFile>
-      <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>lz32.lib;winmm.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
@@ -109,7 +109,6 @@
   <ItemGroup>
     <ProjectReference Include="AI.vcxproj">
       <Project>{d41b324f-94a2-44a6-b0fa-dcee82ab847c}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="Audio.vcxproj">
       <Project>{d09bdd7b-8d8f-4530-a918-92056d4b6cb4}</Project>
@@ -130,6 +129,9 @@
     <ProjectReference Include="Loader.vcxproj">
       <Project>{0b037087-835c-4779-9610-e1022c933d9d}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Math.vcxproj">
+      <Project>{8585b3dd-f839-4fd5-986a-d1358dbffd0e}</Project>
     </ProjectReference>
     <ProjectReference Include="MathTest.vcxproj">
       <Project>{f1c6ee9b-933b-4ec4-ba5b-4d6cf384c691}</Project>

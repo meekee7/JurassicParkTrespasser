@@ -203,3 +203,5 @@ uint32 u4LookupResourceString(int32 i4_id, char* str_buf, uint32 u4_buf_len)
 }
 
 PFNWORLDLOADNOTIFY          g_pfnWorldLoadNotify;
+
+void LineColour(int, int, int){}

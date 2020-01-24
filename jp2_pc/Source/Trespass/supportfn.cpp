@@ -1327,4 +1327,4 @@ void ClearInputState(bool bCenterMouse /* = false */)
     }
 }
 
-
+void LineColour(int, int, int){}

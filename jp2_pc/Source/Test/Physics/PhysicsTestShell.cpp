@@ -35,6 +35,7 @@
 #include "Shell/WinEvent.hpp"
 #include "Lib/View/ColourBase.hpp"
 #include "Lib/Sys/W95/Render.hpp"
+#include "Lib/EntityDBase/WorldDBase.hpp"
 #include "PhysicsTestShell.hpp"
 #include "PhysicsTest.hpp"
 
@@ -283,3 +284,19 @@ void WindowsEvent(uint u_message, WPARAM wp_param, LPARAM lp_param)
 			break;
 	}
 }
+
+
+//Various stuff needed to make the linker happy
+bool        bUseOutputFiles = FALSE;
+bool        bUseReplayFile = TRUE;
+//bool		g_bRestartWithRenderDlg = FALSE;
+bool        bIsTrespasser = false;
+bool		bInvertMouse = false;
+uint32 g_u4NotifyParam = 0;
+
+uint32 u4LookupResourceString(int32 i4_id, char* str_buf, uint32 u4_buf_len)
+{
+	return 0;
+}
+
+PFNWORLDLOADNOTIFY          g_pfnWorldLoadNotify;
