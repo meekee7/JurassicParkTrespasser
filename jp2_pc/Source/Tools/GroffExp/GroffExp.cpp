@@ -2939,7 +2939,7 @@ uint uExtractFaces(Mesh& mesh, CMathematicsUtil& mutil_utils)
 	mutil_utils.slLogfile.Printf(mutil_utils.guiInterface.strGetString(IDS_FACE_NORMAL_TITLE), u_faces);
 
 	// Loop through all the faces in the list and get the face normals.
-	for (u_face = 0; u_face < u_faces; u_face++) 
+	for (uint u_face = 0; u_face < u_faces; u_face++) 
 	{
 		// Get the face normal.
 		Point3& pt3_normal = mesh.getFaceNormal(u_face);
@@ -2955,7 +2955,7 @@ uint uExtractFaces(Mesh& mesh, CMathematicsUtil& mutil_utils)
 	mutil_utils.slLogfile.Printf(mutil_utils.guiInterface.strGetString(IDS_VERTEX_NORMAL_TITLE), u_faces);
 
 	// Now get the vertex normal list.
-	for (u_face = 0; u_face < u_faces; u_face++) 
+	for (uint u_face = 0; u_face < u_faces; u_face++) 
 	{
 		// Get the face vertex indices.
 		Face& face = mesh.faces[u_face];
@@ -3078,7 +3078,7 @@ uint uExtractTextureVertices(Mesh& mesh, CMathematicsUtil& mutil_utils)
 	mutil_utils.slLogfile.Printf(mutil_utils.guiInterface.strGetString(IDS_TFACE_TITLE), i_face_count);
 
 	// Process the texture face list
-	for (i_i = 0; i_i < i_face_count; i_i++)
+	for (int i_i = 0; i_i < i_face_count; i_i++)
 	{
 		// Dump the texture face definition into the logfile.
 		mutil_utils.slLogfile.Printf(mutil_utils.guiInterface.strGetString(IDS_TFACE_DEFS), i_i, 
