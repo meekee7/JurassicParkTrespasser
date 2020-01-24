@@ -214,7 +214,6 @@
     <ClCompile Include="Source\GroffBuild\gbuilder.cpp" />
     <ClCompile Include="Source\GroffBuild\main.cpp" />
     <ClCompile Include="Source\GroffBuild\maindlg.cpp" />
-    <ClCompile Include="Source\GroffBuild\reg.cpp" />
     <ClCompile Include="Source\GroffBuild\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -231,7 +230,6 @@
     <ClInclude Include="Source\GroffBuild\dialogs.h" />
     <ClInclude Include="Source\GroffBuild\gbuilder.h" />
     <ClInclude Include="Source\GroffBuild\main.h" />
-    <ClInclude Include="Source\GroffBuild\reg.h" />
     <ClInclude Include="Source\GroffBuild\utils.h" />
   </ItemGroup>
   <ItemGroup>

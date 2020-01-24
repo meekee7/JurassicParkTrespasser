@@ -291,3 +291,18 @@ void ResetAppData()
 	// None for Trespass at this time.
 }
  
+
+//Various stuff needed to make the linker happy
+//bool		g_bRestartWithRenderDlg = FALSE;
+bool        bIsTrespasser = false;
+bool		bInvertMouse = false;
+uint32 g_u4NotifyParam = 0;
+
+uint32 u4LookupResourceString(int32 i4_id, char* str_buf, uint32 u4_buf_len)
+{
+    return 0;
+}
+
+PFNWORLDLOADNOTIFY          g_pfnWorldLoadNotify;
+
+void LineColour(int, int, int) {}
