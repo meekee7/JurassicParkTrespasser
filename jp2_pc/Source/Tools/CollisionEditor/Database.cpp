@@ -861,7 +861,7 @@ const char* strGetLine(std::ifstream& file)
 	return strBuffer;
 }
 
-
+/*
 //*********************************************************************************************
 const char* strLeafName(const char* str_filename)
 {
@@ -883,7 +883,8 @@ const char* strLeafName(const char* str_filename)
 
 	return str_begin;
 }
-
+*/
+/*
 //*********************************************************************************************
 bool bFileExists(const char* str_filename)
 {
@@ -911,6 +912,7 @@ bool bFileExists(const char* str_filename)
 	// The function succeeded, therefore the file exists.
 	return true;
 }
+*/
 
 //*********************************************************************************************
 bool bFileExtension(const char* str_filename, const char* str_ext)
@@ -995,8 +997,10 @@ void LoadFile(const char* str_filename, void* pv_data)
 }
 
 
+/*
 //*********************************************************************************************
 uint32 u4Hash(const void* pv, int i_size, bool string)
 {
 	return CEffectDatabase::u4HashBlock(pv,i_size);
 }
+*/

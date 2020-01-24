@@ -1009,3 +1009,19 @@ bool bPartialLanguageFileName
 
 	return true;
 }
+
+// Porting code.
+void* hwndGetMainHwnd()
+{
+	return nullptr;
+	//AlwaysAssert(pwnsWindowsShell);
+	//return pwnsWindowsShell->hwndMain;
+}
+
+// Porting code.
+HINSTANCE hinstGetMainHInstance()
+{
+	return nullptr;
+	//AlwaysAssert(pwnsWindowsShell);
+	//return pwnsWindowsShell->hinsAppInstance;
+}

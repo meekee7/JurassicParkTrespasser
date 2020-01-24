@@ -6,6 +6,7 @@
 #include "CollisionEditor.h"
 #include "CollisionEditorDlg.h"
 #include "Lib/Sys/MemoryLog.hpp"
+#include "Lib/EntityDBase/WorldDBase.hpp"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -44,6 +45,7 @@ bool bIsTrespasser = false;
 CCollisionEditorApp theApp;
 
 
+/*
 void __cdecl dprintf(char* str,...)
 {
 	char	buf[256];
@@ -55,6 +57,7 @@ void __cdecl dprintf(char* str,...)
 
 	OutputDebugString(buf);
 }
+*/
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -98,7 +101,28 @@ int CCollisionEditorApp::ExitInstance()
 	return CWinApp::ExitInstance();
 }
 
-
+/*
 void  AddToCounter(EMemoryLog eml,long l)
 {
+}
+*/
+
+//Various stuff needed to make the linker happy
+bool        bUseOutputFiles = FALSE;
+bool        bUseReplayFile = TRUE;
+//bool		g_bRestartWithRenderDlg = FALSE;
+bool		bInvertMouse = false;
+uint32 g_u4NotifyParam = 0;
+
+uint32 u4LookupResourceString(int32 i4_id, char* str_buf, uint32 u4_buf_len)
+{
+	return 0;
+}
+
+PFNWORLDLOADNOTIFY          g_pfnWorldLoadNotify;
+
+void LineColour(int, int, int) {}
+void ResetAppData()
+{
+	// Clears all data that needs clearing on a world dbase reset.
 }
