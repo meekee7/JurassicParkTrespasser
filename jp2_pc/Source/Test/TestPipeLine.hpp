@@ -31,6 +31,7 @@
 #define HEADER_TEST_TESTPIPELINE_HPP
 
 #include "Lib/EntityDBase/WorldDBase.hpp"
+#include "Lib/View/Pixel.hpp"
 
 
 void TestDrawLine(double d_xa, double d_ya, double d_xb, double d_yb, TPixel pix);

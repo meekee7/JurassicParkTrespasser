@@ -298,6 +298,7 @@
 #include "Lib/EntityDBase/Query/QRenderer.hpp"
 #include "Lib/EntityDBase/GameLoop.hpp"
 #include "Lib/EntityDBase/EntityLight.hpp"
+#include "ConIO.hpp"
 
 
 #define angFIELD_OF_VIEW_INCR	(CAngle)dDegreesToRadians(2)
