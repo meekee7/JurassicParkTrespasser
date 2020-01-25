@@ -119,7 +119,6 @@
       <PrecompiledHeaderOutputFile>.\Build\Final_P6\ScreenRenderDWI\ScreenRenderDWI.pch</PrecompiledHeaderOutputFile>
       <ObjectFileName>.\Build\Final_P6\ScreenRenderDWI\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final_P6\ScreenRenderDWI\</ProgramDataBaseFileName>
-      <AdditionalOptions> /GM /Zm200 </AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
@@ -150,7 +149,6 @@
       <PrecompiledHeaderOutputFile>.\Build\Final\ScreenRenderDWI\ScreenRenderDWI.pch</PrecompiledHeaderOutputFile>
       <ObjectFileName>.\Build\Final\ScreenRenderDWI\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final\ScreenRenderDWI\</ProgramDataBaseFileName>
-      <AdditionalOptions> /GM /Zm200 </AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
@@ -181,7 +179,6 @@
       <PrecompiledHeaderOutputFile>.\Build\Release\ScreenRenderDWI\ScreenRenderDWI.pch</PrecompiledHeaderOutputFile>
       <ObjectFileName>.\Build\Release\ScreenRenderDWI\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Release\ScreenRenderDWI\</ProgramDataBaseFileName>
-      <AdditionalOptions> /GM /Zm200 </AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
@@ -211,7 +208,6 @@
       <PrecompiledHeaderOutputFile>.\Build\Debug\ScreenRenderDWI\ScreenRenderDWI.pch</PrecompiledHeaderOutputFile>
       <ObjectFileName>.\Build\Debug\ScreenRenderDWI\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Debug\ScreenRenderDWI\</ProgramDataBaseFileName>
-      <AdditionalOptions> /Zm200 /GM </AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -235,76 +231,40 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Lib\Renderer\Primitives\DrawSubTriangle.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final P6|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Zm200 /GM   /Zm200 /GM </AdditionalOptions>
+
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Primitives\DrawTriangle.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final P6|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Zm200 /GM   /Zm200 /GM </AdditionalOptions>
+
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Primitives\DrawTriangleEx.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final P6|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Zm200 /GM   /Zm200 /GM </AdditionalOptions>
+
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Primitives\FastBump.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final P6|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Zm200 /GM   /Zm200 /GM </AdditionalOptions>
+
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Primitives\FastBumpMath.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final P6|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Zm200 /GM   /Zm200 /GM </AdditionalOptions>
+
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Primitives\FastBumpTable.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final P6|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Zm200 /GM   /Zm200 /GM </AdditionalOptions>
+
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\RenderCache.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final P6|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Zm200 /GM   /Zm200 /GM </AdditionalOptions>
+
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\RenderCacheHelp.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final P6|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Zm200 /GM   /Zm200 /GM </AdditionalOptions>
+
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\RenderCachePriv.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final P6|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Zm200 /GM   /Zm200 /GM </AdditionalOptions>
+
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\ScreenRenderAuxD3D.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final P6|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Zm200 /GM   /Zm200 /GM </AdditionalOptions>
+
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\ScreenRenderAuxD3DBatch.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final P6|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Zm200 /GM   /Zm200 /GM </AdditionalOptions>
+
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\ScreenRenderDWI.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final P6|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Final|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"> /GM /Zm200   /GM /Zm200 </AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Zm200 /GM   /Zm200 /GM </AdditionalOptions>
+
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
