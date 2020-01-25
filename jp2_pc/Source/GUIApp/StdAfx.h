@@ -62,6 +62,12 @@
 #pragma warning(disable: 4666)
 #endif
 
+#undef DIRECT3D_VERSION //The wrong D3D version comes from somewhere in the MFC headers
+#define DIRECT3D_VERSION 0x0700 //We must set the correct version here
+
+
+// Project includes.
+
 // MFC includes.
 #include <afxwin.h>         // MFC core and standard components
 #include <afxext.h>         // MFC extensions
@@ -72,7 +78,7 @@
 #undef min
 #undef max
 
-// Project includes.
+
 #include "resource.h"
 #include "Common.hpp"
 

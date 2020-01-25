@@ -1389,3 +1389,6 @@ float fGetFloatFromString(char* str_float)
 	Verify(sscanf(str_float, "%f", &f) == 1);
 	return f;
 }
+
+//Various stuff needed to make the linker happy
+void LineColour(int, int, int) {}
