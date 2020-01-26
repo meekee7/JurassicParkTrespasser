@@ -2023,7 +2023,7 @@ void CUITextbox::Update()
         DrawEdge(hdc, &rc, EDGE_SUNKEN, BF_RECT | BF_ADJUST);
     }
 
-    LPSTR text = const_cast<LPSTR>(m_pszText.data()); //TODO data has a non-const overload. Why does it not activate in FinalP6 config?
+    LPSTR text = m_pszText.data();
 
     // If we want VCenter and it is not single line. 
     // (DrawTextEx does not support this)  We need to calculate
