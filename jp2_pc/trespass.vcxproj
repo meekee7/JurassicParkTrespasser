@@ -254,6 +254,7 @@
       <ObjectFileName>.\Build\Final_P6\trespass\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final_P6\trespass\</ProgramDataBaseFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>

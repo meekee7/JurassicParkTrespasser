@@ -104,6 +104,7 @@
       <ObjectFileName>.\Build\Final\QuantizerTool\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final\QuantizerTool\</ProgramDataBaseFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>

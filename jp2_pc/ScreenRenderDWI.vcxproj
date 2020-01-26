@@ -120,6 +120,7 @@
       <ObjectFileName>.\Build\Final_P6\ScreenRenderDWI\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final_P6\ScreenRenderDWI\</ProgramDataBaseFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -231,40 +232,28 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Lib\Renderer\Primitives\DrawSubTriangle.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Primitives\DrawTriangle.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Primitives\DrawTriangleEx.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Primitives\FastBump.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Primitives\FastBumpMath.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Primitives\FastBumpTable.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\RenderCache.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\RenderCacheHelp.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\RenderCachePriv.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\ScreenRenderAuxD3D.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\ScreenRenderAuxD3DBatch.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\ScreenRenderDWI.cpp">
-
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

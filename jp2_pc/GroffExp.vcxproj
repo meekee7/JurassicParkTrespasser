@@ -196,6 +196,7 @@
       <ProgramDataBaseFileName>.\Build\GroffExp\Final\</ProgramDataBaseFileName>
       <AdditionalOptions> /I /Jp2_pc/Source/Tools/GroffExp" /I /jp2_pc/Inc/MaxSDK" /I /jp2_pc/Source" /I /jp2_pc/Source/Tools/GroffExp" " " " "</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>

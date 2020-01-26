@@ -210,6 +210,7 @@
       <ObjectFileName>.\Build\Final_P6\Physics\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final_P6\Physics\</ProgramDataBaseFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -231,61 +232,42 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Lib\Physics\Arms.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\BioModel.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\dino_biped.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\dino_quad.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\foot.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\futil.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\Human.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\InfoBox.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\InfoCompound.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\InfoPlayer.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\InfoSkeleton.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\Magnet.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\Pelvis.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\PhysicsImport.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\PhysicsInfo.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\PhysicsSystem.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\WaterDisturbance.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\waves.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Physics\Xob_bc.cpp">
-
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

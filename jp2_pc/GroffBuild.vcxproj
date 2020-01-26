@@ -180,6 +180,7 @@
       <ObjectFileName>.\GroffBuild\Final\</ObjectFileName>
       <ProgramDataBaseFileName>.\GroffBuild\Final\</ProgramDataBaseFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>

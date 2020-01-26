@@ -210,6 +210,7 @@
       <ObjectFileName>.\Build\Final_P6\Render3D\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final_P6\Render3D\</ProgramDataBaseFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -231,70 +232,48 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Lib\Renderer\Camera.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Clip.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\ClipRegion2D.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\DepthSort.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\DepthSortTools.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Fog.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Light.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\LightBlend.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Line.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\LineSide2D.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Material.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Overlay.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Particles.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\PipeLine.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\PipeLineHeap.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\PipeLineHelp.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\ScreenPolygon.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\ScreenRender.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\ScreenRenderShadow.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Shadow.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Sky.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Texture.cpp">
-
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

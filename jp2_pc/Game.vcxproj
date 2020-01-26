@@ -210,6 +210,7 @@
       <ObjectFileName>.\Build\Final_P6\Game\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final_P6\Game\</ProgramDataBaseFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -231,73 +232,50 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game\DesignDaemon\BloodSplat.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Game\DesignDaemon\Daemon.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Game\DesignDaemon\Gun.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Game\DesignDaemon\HitSpang.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Game\DesignDaemon\Player.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Game\DesignDaemon\Socket.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\EntityDBase\GameLoop.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\EntityDBase\TextOverlay.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\Action.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\BooleanTrigger.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\CollisionTrigger.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\CreatureTrigger.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\ExpressionEvaluate.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\GameActions.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\LocationTrigger.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\MagnetTrigger.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\MoreMassTrigger.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\ObjectTrigger.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\SequenceTrigger.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\StartTrigger.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\TimerTrigger.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\TriggerBase.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Trigger\VariableTrigger.cpp">
-
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

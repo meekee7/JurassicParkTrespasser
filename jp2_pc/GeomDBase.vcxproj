@@ -180,6 +180,7 @@
       <ObjectFileName>.\Build\Final_P6\GeomDBase\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final_P6\GeomDBase\</ProgramDataBaseFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -231,109 +232,74 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\GUIApp\PreDefinedShapes.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\ClipMesh.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\Hull.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\Mesh.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\Partition.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\PartitionBuild.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\PartitionPriv.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\PartitionSpace.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\PlaneDef.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\RayCast.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\Shape.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\Skeleton.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\Terrain.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\TerrainLoad.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\TerrainObj.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\TerrainTexture.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\TexturePageManager.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\WaterQuadTree.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\WaveletConv.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\WaveletDataFormat.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\WaveletQuadTree.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\WaveletQuadTreeBase.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\WaveletQuadTreeBaseRecalc.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\WaveletQuadTreeBaseTri.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\WaveletQuadTreeQuery.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\WaveletQuadTreeTForm.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\GeomDBase\WaveletStaticData.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\GeomTypes.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\GeomTypesBox.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\GeomTypesCamera.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\GeomTypesPlane.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\GeomTypesPoly.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\GeomTypesSphere.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\Occlude.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\Lib\Renderer\RenderType.cpp">
-
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

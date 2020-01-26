@@ -125,6 +125,7 @@
       <ObjectFileName>.\Build\Final_P6\GUIApp\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final_P6\GUIApp\</ProgramDataBaseFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -295,145 +296,98 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\GUIApp\AI Dialogs2Dlg.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\Background.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\CameraProperties.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogAlphaColour.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogBumpPack.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogCulling.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogDepthSort.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogFog.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogGamma.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogGore.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogGun.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogMagnet.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogMaterial.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogMemLog.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogMipmap.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogObject.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogOcclusion.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogPartition.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogPhysics.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogPlayer.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogRenderCache.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogScheduler.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogSky.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogSoundMaterial.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogString.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogTeleport.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogTerrain.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogTexturePack.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogTexturePackOptions.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogVM.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\DialogWater.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\FindDuplicates.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\GDIBitmap.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\GUIApp.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\GUIAppDlg.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\GUIControls.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\GUIPipeline.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\GUITools.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\LightProperties.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\Options.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\ParameterDlg.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\PerspectiveSubdivideDialog.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\QualityDialog.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\SoundPropertiesDlg.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\StdAfx.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\TerrainTest.cpp">
-
     </ClCompile>
     <ClCompile Include="Source\GUIApp\Toolbar.cpp">
-
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

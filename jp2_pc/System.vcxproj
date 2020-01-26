@@ -120,6 +120,7 @@
       <ObjectFileName>.\Build\Final_P6\System\</ObjectFileName>
       <ProgramDataBaseFileName>.\Build\Final_P6\System\</ProgramDataBaseFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x0409</Culture>
