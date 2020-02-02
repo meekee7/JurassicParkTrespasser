@@ -3551,7 +3551,7 @@ int	j;
 	comp_index = 0;
 
 //	YIKES!
-	OKtoJUMP = false;
+	//OKtoJUMP = false;
 }
 
 inline void CXob::ToBio()
