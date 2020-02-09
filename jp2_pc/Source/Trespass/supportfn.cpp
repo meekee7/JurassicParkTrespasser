@@ -727,7 +727,7 @@ void MyBlt(LPBYTE pbSrc,
     iDstDiff = iDstPitch - (iWidth * iDstBytes);
 
     // We are going to assume that the surfaces are the same bit depth
-    Assert(iSrcBytes == iDstBytes);
+    //Assert(iSrcBytes == iDstBytes);
     iWidthBytes = iWidth * iDstBytes;
 
     // only do the illumination stuff if we are in 16bpp mode
@@ -941,14 +941,14 @@ CCamera* pcamGetCamera()
 
 void SetupGameScreen()
 {
-    int             iWidth;
-    int             iHeight;
+    int             iWidth = 1440;
+    int             iHeight = 900;
     BOOL            bSystemMem;
     RECT            rc;
     int             iGore;
 
-    bGetDimensions(iWidth, iHeight);
-	Video::SetToValidMode(iWidth, iHeight);
+    //bGetDimensions(iWidth, iHeight);
+	//Video::SetToValidMode(iWidth, iHeight);
 	SetDimensions(iWidth, iHeight);
     bSystemMem = bGetSystemMem();
 

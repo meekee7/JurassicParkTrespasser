@@ -518,7 +518,7 @@ public:
 	//******************************************************************************************
 	virtual CScreenRender* psrCreateCompatible(rptr<CRaster> pras_screen)
 	{
-		Assert(pras_screen->iPixelBits == prasScreen->iPixelBits);
+		//Assert(pras_screen->iPixelBits == prasScreen->iPixelBits);
 		return new CScreenRenderDWIT<TPIX>(pSettings, pras_screen);
 	}
 

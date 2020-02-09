@@ -318,7 +318,7 @@ private:
 		Assert(bWithin(i_buffers, 1, 3));
 
 		iBuffers    = i_buffers;
-		bFullScreen = i_bits != 0;
+		bFullScreen = false;// i_bits != 0;
 		iWidthFront  = i_width;
 		iHeightFront = i_height;
 
@@ -1187,7 +1187,7 @@ rptr<CRaster> prasReadBMP(const char* str_bitmap_name, bool b_vid)
 		bGammaAvailable = false;
 		bGammaFlash		= false;
 
-		bFullScreen = i_bits != 0;
+		bFullScreen = false;// i_bits != 0;
 
 		// Use separate creation code for Direct3D.
 		if (priv_self.bConstructD3D(hwnd, i_width, i_height, 16))
@@ -1872,7 +1872,7 @@ rptr<CRaster> prasReadBMP(const char* str_bitmap_name, bool b_vid)
 		iWidthFront  = i_width;
 		iHeightFront = i_height;
 		iBuffers     = 2;
-		bFullScreen  = true;
+		bFullScreen = false;// true;
 		bFlippable   = true;
 
 		// Indicate success.
