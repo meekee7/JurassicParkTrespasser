@@ -42,6 +42,9 @@
 #include "Lib/W95/Direct3D.hpp"
 #include "Lib/Sys/DebugConsole.hpp"
 
+#pragma comment(lib, "dxguid.lib")
+#pragma comment(lib, "ddraw.lib")
+
 // forward declaration of the DirectDrawCreate function call that we will
 // forceably load later
 typedef HRESULT (__stdcall *FP_DDRAW)(LPSTR, LPDIRECTDRAW*, LPSTR);

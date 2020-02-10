@@ -80,6 +80,8 @@
 
 #ifdef USE_DIRECTINPUT
 #include <DirectX/DInput.h>
+#pragma comment(lib, "dxguid.lib")
+#pragma comment(lib, "dinput8.lib")
 #endif //#ifdef USE_DIRECTINPUT
 
 extern bool         bInvertMouse;
