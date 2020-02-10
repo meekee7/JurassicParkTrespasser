@@ -283,10 +283,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\DirectX\ddraw.lib" />
-    <Library Include="lib\DirectX\dxguid.lib" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="source\Lib\View\AGPTextureMemManager.hpp" />
     <ClInclude Include="source\Lib\View\Clut.hpp" />
     <ClInclude Include="source\Lib\View\Colour.hpp" />

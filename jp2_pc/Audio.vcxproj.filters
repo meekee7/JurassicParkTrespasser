@@ -35,14 +35,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\DirectX\dsound.lib">
-      <Filter>Source Files</Filter>
-    </Library>
-    <Library Include="lib\DirectX\dxguid.lib">
-      <Filter>Source Files</Filter>
-    </Library>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Source\Lib\Audio\Audio.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
