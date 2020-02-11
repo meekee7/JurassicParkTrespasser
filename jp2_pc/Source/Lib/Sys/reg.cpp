@@ -2,17 +2,22 @@
 #include <windows.h>
 #include "Reg.h"
 #include "RegInit.hpp"
+#include <string>
+
+
+/*
 #define REGKEYPARENT HKEY_LOCAL_MACHINE
 #ifndef DEMO_BUILD
 #define REGLOCATION "Software\\DreamWorks Interactive\\Trespasser"
 #else
 #define REGLOCATION "Software\\DreamWorks Interactive\\Trespasser Demo"
 #endif
-
+*/
 
 //
 // Module specific variables.
 //
+
 
 BOOL bSafeModeReg = FALSE;
 
@@ -20,7 +25,7 @@ void DisableSafemode()
 {
 	bSafeModeReg = FALSE;
 }
-
+/*
 HKEY    g_hKey = NULL;
 
 
@@ -159,3 +164,56 @@ float GetRegFloat(LPCSTR lpszVal, float fDefault)
 		return f_retval = fDefault;
 	return f_retval;
 }
+*/
+
+static constexpr char iniappname[] = "OpenTrespasser";
+static constexpr char inifilename[] = ".\\opentrespasser.ini"; //Path is necessary, otherwise the Windows directory is searched for the ini file
+
+
+void OpenKey()
+{
+}
+
+void CloseKey(BOOL b_change_safemode)
+{
+}
+
+int GetRegValue(LPCSTR lpszVal, int nDefault)
+{
+	return GetPrivateProfileInt(iniappname, lpszVal, nDefault, inifilename);
+}
+
+int GetRegData(LPCSTR lpszVal, LPBYTE lpszData, int nSize)
+{
+	if (!GetPrivateProfileStruct(iniappname, lpszVal, lpszData, nSize, inifilename))		
+		return 0;
+	return nSize;
+}
+
+int GetRegString(LPCSTR lpszVal, LPSTR lpszString, int nSize, LPCSTR lpszDefault)
+{
+	return GetPrivateProfileString(iniappname, lpszVal, lpszDefault, lpszString, nSize, inifilename);
+}
+
+void SetRegValue(LPCSTR lpszVal, int nVal)
+{
+	std::string string = std::to_string(nVal);
+	WritePrivateProfileString(iniappname, lpszVal, string.c_str(), inifilename);
+}
+
+void SetRegString(LPCSTR lpszVal, LPCSTR lpszString)
+{
+	WritePrivateProfileString(iniappname, lpszVal, lpszString, inifilename);
+}
+
+void SetRegData(LPCSTR lpszVal, LPBYTE lpszData, int nSize)
+{
+	WritePrivateProfileStruct(iniappname, lpszVal, lpszData, nSize, inifilename);
+}
+
+void DeleteValue(LPCSTR lpszVal)
+{
+	WritePrivateProfileString(iniappname, lpszVal, "", inifilename);
+}
+
+
