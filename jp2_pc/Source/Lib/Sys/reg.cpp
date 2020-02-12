@@ -3,16 +3,18 @@
 #include "Reg.h"
 #include "RegInit.hpp"
 #include <string>
+#include <fstream>
+#include <filesystem>
+#include <atlbase.h>
 
 
-/*
 #define REGKEYPARENT HKEY_LOCAL_MACHINE
 #ifndef DEMO_BUILD
 #define REGLOCATION "Software\\DreamWorks Interactive\\Trespasser"
 #else
 #define REGLOCATION "Software\\DreamWorks Interactive\\Trespasser Demo"
 #endif
-*/
+
 
 //
 // Module specific variables.
@@ -170,8 +172,133 @@ static constexpr char iniappname[] = "OpenTrespasser";
 static constexpr char inifilename[] = ".\\opentrespasser.ini"; //Path is necessary, otherwise the Windows directory is searched for the ini file
 
 
+void transferDWORD(CRegKey& key, LPCSTR name)
+{
+	DWORD value = 0;
+	key.QueryDWORDValue(name, value);
+	SetRegValue(name, value);
+}
+
+void transferString(CRegKey& key, LPCSTR name, ULONG size)
+{
+	std::string string;
+	ULONG allocated = size + 1;
+	string.resize(allocated);
+	key.QueryStringValue(name, string.data(), &allocated);
+	SetRegString(name, string.c_str());
+}
+
+void transferBinary(CRegKey& key, LPCSTR name, ULONG size)
+{
+	std::vector<uint8_t> data;
+	ULONG allocated = size;
+	data.resize(size);
+	key.QueryBinaryValue(name, data.data(), &allocated);
+	SetRegData(name, data.data(), size);
+}
+
+bool CreateIniIfNotExists()
+{
+	if (std::filesystem::exists(inifilename))
+		return false;
+	std::fstream file(inifilename, std::ios_base::out | std::ios_base::in | std::ios_base::trunc | std::ios_base::_Noreplace );
+	//file << "[" << iniappname << std::endl;
+	return file.is_open();
+}
+
+void ConvertRegistryToINI()
+{
+	const char* keys[] = {
+		strDDDEVICE_NAME			,
+		strDDDEVICE_DESCRIPTION		,
+		strDDDEVICE_GUID			,
+		strD3DDEVICE_NAME			,
+		strD3DDEVICE_DESCRIPTION	,
+		strD3DDEVICE_GUID			,
+		strFLAG_FULLSCREEN          ,
+		strFLAG_D3D                 ,
+		strFLAG_SYSTEMMEM           ,
+		strFLAG_REGINIT				,
+		strSIZE_WIDTH               ,
+		strSIZE_HEIGHT              ,
+		strPARTITION_SUBDIVISION    ,
+		strPARTITION_STUFFCHILDREN  ,
+		strAUTOSETTINGS             ,
+		REG_KEY_PID                 ,
+		REG_KEY_DATA_DRIVE          ,
+		REG_KEY_INSTALLED           ,
+		REG_KEY_INSTALLED_DIR       ,
+		REG_KEY_NOVIDEO             ,
+		REG_KEY_AUDIO_LEVEL         ,
+		REG_KEY_AUDIO_EFFECT        ,
+		REG_KEY_AUDIO_AMBIENT       ,
+		REG_KEY_AUDIO_VOICEOVER     ,
+		REG_KEY_AUDIO_MUSIC         ,
+		REG_KEY_AUDIO_SUBTITLES     ,
+		REG_KEY_AUDIO_ENABLE		,
+		REG_KEY_AUDIO_ENABLE3D		,
+		REG_KEY_GAMMA               ,
+		REG_KEY_DSOUND_IGNORE       ,
+		REG_KEY_DDRAW_CERT_IGNORE   ,
+		REG_KEY_DDRAW_HARD_IGNORE   ,
+		REG_KEY_VIEWPORT_X          ,
+		REG_KEY_VIEWPORT_Y          ,
+		REG_KEY_RENDERING_QUALITY   ,
+		REG_KEY_AUTOLOAD            ,
+		REG_KEY_SAFEMODE            ,
+		REG_KEY_KEYMAP              ,
+		REG_KEY_GORE                ,
+		REG_KEY_INVERTMOUSE         ,
+		REG_KEY_AUTOSAVE            ,
+		strD3D_FILTERCACHES         ,
+		strD3D_DITHER               ,
+		strVIDEOCARD_TYPE			,
+		strVIDEOCARD_NAME			,
+		strRECOMMENDEDTEXMAX        ,
+		strTRIPLEBUFFER             ,
+		strRESTORE_NVIDIA       	,
+		strRESTORE_NVIDIAMIPMAPS	,
+		strRESTORE_NVIDIASQUARE     ,
+		strPAGEMANAGED              ,
+		strD3D_TITLE                ,
+		strZBUFFER_BITDEPTH			,
+		strHARDWARE_WATER           
+	};
+
+	CRegKey regkey;
+	regkey.Open(REGKEYPARENT, REGLOCATION, KEY_READ);
+
+	for (auto entry : keys)
+	{
+		DWORD type = 0;
+		ULONG size = 0;
+		auto status = regkey.QueryValue(entry, &type, nullptr, &size);
+		if (status == ERROR_FILE_NOT_FOUND) //key does not exit
+			continue;
+		if (status != ERROR_SUCCESS)
+		{
+			_RPT1(0, "Error when reading registry key %s\n", entry);
+			continue;
+		}
+
+		if (type == REG_BINARY)
+			transferBinary(regkey, entry, size);
+		else if (type == REG_DWORD)
+			transferDWORD(regkey, entry);
+		else if (type == REG_SZ)
+			transferString(regkey, entry, size);
+		else
+		{
+			_RPT1(0, "Error: could not recognize type of registry key %s\n", entry);
+		}
+	}
+	
+}
+
 void OpenKey()
 {
+	if (CreateIniIfNotExists())
+		ConvertRegistryToINI();
 }
 
 void CloseKey(BOOL b_change_safemode)
