@@ -259,10 +259,6 @@
     <ClCompile Include="Source\Shell\WinRenderTools.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\DirectX\dinput.lib" />
-    <Library Include="lib\DirectX\dxguid.lib" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Source\GblInc\Config.hpp" />
     <ClInclude Include="source\lib\control\Control.hpp" />
     <ClInclude Include="source\Lib\Sys\BitBuffer.hpp" />

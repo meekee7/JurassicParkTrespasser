@@ -92,14 +92,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\DirectX\ddraw.lib">
-      <Filter>Source Files</Filter>
-    </Library>
-    <Library Include="lib\DirectX\dxguid.lib">
-      <Filter>Source Files</Filter>
-    </Library>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="source\Lib\View\AGPTextureMemManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

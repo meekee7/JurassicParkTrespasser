@@ -241,10 +241,6 @@
     <ClCompile Include="Source\Lib\Audio\Sample.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\DirectX\dsound.lib" />
-    <Library Include="lib\DirectX\dxguid.lib" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Source\Lib\Audio\Audio.hpp" />
     <ClInclude Include="Source\Lib\Audio\AudioADPCM.hpp" />
     <ClInclude Include="Source\Lib\Audio\AudioDaemon.hpp" />

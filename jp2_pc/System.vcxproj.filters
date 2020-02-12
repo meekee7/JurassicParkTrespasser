@@ -95,14 +95,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\DirectX\dinput.lib">
-      <Filter>Source Files</Filter>
-    </Library>
-    <Library Include="lib\DirectX\dxguid.lib">
-      <Filter>Source Files</Filter>
-    </Library>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="source\Lib\Sys\BitBuffer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -250,6 +250,8 @@
 #include "eax.h"			// Creative environmental audio
 
 
+#pragma comment(lib, "dxguid.lib")
+#pragma comment(lib, "dsound.lib")
 
 //**********************************************************************************************
 // setup debug new handler so we get the file and line number of leaks
