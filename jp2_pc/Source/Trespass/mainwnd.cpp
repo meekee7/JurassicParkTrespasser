@@ -91,13 +91,17 @@ BOOL CMainWnd::InitSurface()
 			return FALSE;
 		}
 
-		if (!prnshMain->bCreateScreen(1440, 900, 16, bGetSystemMem()))
+        RECT targetrect = { 0 };
+        GetClientRect(m_hwnd, &targetrect);
+		
+		if (!prnshMain->bCreateScreen(targetrect.right, targetrect.bottom, 16, bGetSystemMem()))
 		{
 			return FALSE;
 		}
 	}
 
-    SetRect(&rc, 0, 0, 1440, 900);
+    GetWindowRect(m_hwnd, &rc);
+    //SetRect(&rc, 0, 0, 1440, 900);
     ClipCursor(&rc);
 
 	if (!m_pUIMgr)

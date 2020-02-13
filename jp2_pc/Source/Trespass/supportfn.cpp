@@ -941,15 +941,18 @@ CCamera* pcamGetCamera()
 
 void SetupGameScreen()
 {
-    int             iWidth = 1440;
-    int             iHeight = 900;
+    RECT targetrect = { 0 };
+    GetClientRect(g_hwnd, &targetrect);
+	
+    int             iWidth = targetrect.right;
+    int             iHeight = targetrect.bottom;
     BOOL            bSystemMem;
     RECT            rc;
     int             iGore;
 
     //bGetDimensions(iWidth, iHeight);
 	//Video::SetToValidMode(iWidth, iHeight);
-	SetDimensions(iWidth, iHeight);
+	//SetDimensions(iWidth, iHeight);
     bSystemMem = bGetSystemMem();
 
     SetRect(&rc, 0, 0, iWidth, iHeight);
@@ -960,8 +963,8 @@ void SetupGameScreen()
                              16, 
                              bSystemMem);
 
-    SetWindowPos(g_hwnd, NULL, -1, -1, iWidth, iHeight,  
-                 SWP_NOMOVE | SWP_NOREDRAW | SWP_NOZORDER);
+    //SetWindowPos(g_hwnd, NULL, -1, -1, iWidth, iHeight,  
+    //             SWP_NOMOVE | SWP_NOREDRAW | SWP_NOZORDER);
 
 
 	d3dDriver.Purge();
