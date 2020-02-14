@@ -332,14 +332,18 @@ extern BOOL bQuitGame;
 
 void CGameWnd::OnDestroy()
 {
-    RECT        rc;
+    //RECT        rc;
+    
+    RECT clientRect;
+    ::GetClientRect(g_hwnd, &clientRect);
+	
+    //SetRect(&rc, 0, 0, 640, 480);
+    ClipCursor(&clientRect);
 
-    SetRect(&rc, 0, 0, 640, 480);
-    ClipCursor(&rc);
+    if (!bQuitGame) {
 
-	if (!bQuitGame)
-		prnshMain->bCreateScreen(640, 480, 16, bGetSystemMem());
-
+        prnshMain->bCreateScreen(clientRect.right, clientRect.bottom, 16, bGetSystemMem());
+    }
     CUIWnd::OnDestroy();
 }
 
