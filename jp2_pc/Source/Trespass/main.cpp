@@ -924,11 +924,15 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     int windowwidth = 640;
     int windowheight = 480;
     bGetDimensions(windowwidth, windowheight);
+
+    DWORD style = WS_VISIBLE | WS_POPUP | WS_SYSMENU;
+    if (!bGetFullScreen())
+        style |= WS_OVERLAPPEDWINDOW;
 	
     if (!CreateWindowEx(0,
                     g_szAppName,
                     sz,
-                    WS_VISIBLE | WS_POPUP | WS_SYSMENU | WS_OVERLAPPEDWINDOW,
+                    style,
                     0,
                     0,
                     windowwidth,
