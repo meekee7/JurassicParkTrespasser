@@ -10,6 +10,9 @@
 #pragma once
 #endif // _MSC_VER >= 1000
 
+#undef DIRECT3D_VERSION //The wrong D3D version comes from somewhere in the MFC headers
+#define DIRECT3D_VERSION 0x0700 //We must set the correct version here
+
 #define VC_EXTRALEAN		// Exclude rarely-used stuff from Windows headers
 
 #include <afxwin.h>         // MFC core and standard components
