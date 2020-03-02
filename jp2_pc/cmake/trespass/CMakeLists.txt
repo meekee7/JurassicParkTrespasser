@@ -77,3 +77,22 @@ add_compile_definitions(
 )
 
 add_executable(${PROJECT_NAME} WIN32 ${trespass_Inc} ${trespass_Src} ${trespass_Rsc} )
+
+target_link_libraries(${PROJECT_NAME}
+    AI
+    Audio
+    EntityDBase
+    Game
+    GeomDBase
+    Loader
+    Math
+    Physics
+    Render3D
+    ScreenRenderDWI
+    Std
+    System
+    View
+
+    comctl32
+    lz32
+)
