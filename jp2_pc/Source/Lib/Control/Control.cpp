@@ -84,6 +84,8 @@
 #pragma comment(lib, "dinput8.lib")
 #endif //#ifdef USE_DIRECTINPUT
 
+#pragma comment(lib, "winmm.lib") //Needed for joyGetPosEx
+
 extern bool         bInvertMouse;
 extern bool         bIsTrespasser;
 
