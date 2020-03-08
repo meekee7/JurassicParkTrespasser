@@ -11,6 +11,7 @@
 #include "Lib/Sys/Reg.h"
 #include "Lib/Sys/RegInit.hpp"
 #include "trespass/DDDevice.hpp"
+#include "d3d.h"
 
 SDDDevice  ddDevice;
 SD3DDevice d3dDevice;
