@@ -95,4 +95,8 @@ target_link_libraries(${PROJECT_NAME}
 
     comctl32
     lz32
+
+    ${CMAKE_SOURCE_DIR}/lib/smacker/SMACKW32.LIB
 )
+
+target_link_options(${PROJECT_NAME} PUBLIC "/SAFESEH:NO") #Needed only for old Smacker lib, remove when it gets replaced
