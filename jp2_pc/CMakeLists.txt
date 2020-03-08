@@ -3,6 +3,7 @@ project(JP2_PC)
 
 set(CMAKE_SUPPRESS_REGENERATION true) #Suppress zero-check project
 set(CMake_MSVC_PARALLEL true GLOBAL)
+
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 add_subdirectory(cmake/AI)
@@ -41,3 +42,6 @@ add_subdirectory(cmake/TweakTrespass)
 add_subdirectory(cmake/View)
 add_subdirectory(cmake/WaveTest)
 add_subdirectory(cmake/WinShell)
+
+
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT trespass)
