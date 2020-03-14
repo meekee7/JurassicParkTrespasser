@@ -6,6 +6,8 @@
 #include "database.h"
 #include "EditMaterialDlg.h"
 
+#include "resource.h"
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
