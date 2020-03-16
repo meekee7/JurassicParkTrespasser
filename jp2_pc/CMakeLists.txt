@@ -5,6 +5,12 @@ set(CMAKE_SUPPRESS_REGENERATION true) #Suppress zero-check project
 set(CMake_MSVC_PARALLEL true GLOBAL)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT trespass)
+string(APPEND CMAKE_CXX_FLAGS " /MP /GF")
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+
+include(cmake/CMakeCommon.cmake)
 
 add_subdirectory(cmake/AI)
 add_subdirectory(cmake/AITest)

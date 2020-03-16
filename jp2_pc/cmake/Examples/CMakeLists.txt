@@ -1,8 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
 project(Examples)
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
 
 list(APPEND Examples_Src
     ${CMAKE_SOURCE_DIR}/Source/Examples/Class.hpp
@@ -13,6 +9,8 @@ list(APPEND Examples_Src
     ${CMAKE_SOURCE_DIR}/Source/Examples/Namespace.hpp
     ${CMAKE_SOURCE_DIR}/Source/Examples/Section.hpp
 )
+
+add_common_options()
 
 add_executable(${PROJECT_NAME} ${Examples_Src} )
 

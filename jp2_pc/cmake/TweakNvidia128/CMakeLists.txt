@@ -1,9 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
 project(TweakNvidia128)
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
 
 list(APPEND TweakNvidia128_Src
     ${CMAKE_SOURCE_DIR}/Source/TweakNVidia128/TweakNVidia128.cpp
@@ -24,17 +19,11 @@ list(APPEND TweakNvidia128_Res
     ${CMAKE_SOURCE_DIR}/Source/TweakNVidia128/res/TweakNVidia128.ico
 )
 
-set(CMAKE_MFC_FLAG 2)
-add_compile_definitions( 
-    #WIN32
-    $<$<CONFIG:Debug>:_DEBUG>
-    $<$<CONFIG:Release>:_RELEASE>
-    #_WINDOWS
-)
-
-
+add_common_options()
 
 add_executable(${PROJECT_NAME} WIN32 ${TweakNvidia128_Src} ${TweakNvidia128_Inc} ${TweakNvidia128_Res} )
+
+target_precompile_headers(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/Source/TweakNVidia128/StdAfx.h)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER Tools)
 

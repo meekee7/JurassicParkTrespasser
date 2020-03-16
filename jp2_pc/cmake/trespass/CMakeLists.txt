@@ -59,22 +59,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/Inc
 )
 
-set(CMAKE_MFC_FLAG 2)
-add_compile_definitions( 
-    #WIN32
-    TRESPASS
-    $<$<CONFIG:Debug>:_DEBUG>
-    $<$<CONFIG:Debug>:BUILDVER_MODE=MODE_DEBUG>
-    $<$<CONFIG:Release>:BUILDVER_MODE=MODE_RELEASE>
-    $<$<CONFIG:Final>:BUILDVER_MODE=MODE_FINAL>
-    $<$<CONFIG:Release>:_RELEASE>
-    $<$<CONFIG:Final>:_RELEASE>
-    
-    $<$<CONFIG:Debug>:TARGET_PROCESSOR=PROCESSOR_PENTIUMPRO>
-    $<$<CONFIG:Release>:TARGET_PROCESSOR=PROCESSOR_PENTIUMPRO>
-    $<$<CONFIG:Final>:TARGET_PROCESSOR=PROCESSOR_PENTIUMPRO>
-    #_WINDOWS
-)
+add_compile_definitions(TRESPASS)
 
 add_executable(${PROJECT_NAME} WIN32 ${trespass_Inc} ${trespass_Src} ${trespass_Rsc} )
 
@@ -100,3 +85,7 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 target_link_options(${PROJECT_NAME} PUBLIC "/SAFESEH:NO") #Needed only for old Smacker lib, remove when it gets replaced
+
+target_precompile_headers(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/Source/trespass/precomp.h)
+
+add_common_options()

@@ -1,8 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
 project(Bugs)
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
 
 list(APPEND Bugs_Src
     ${CMAKE_SOURCE_DIR}/Source/Bugs/BogusNestedType.cpp
@@ -19,6 +15,8 @@ list(APPEND Bugs_Src
     ${CMAKE_SOURCE_DIR}/Source/Bugs/TemplateDefaultRedef.cpp
     ${CMAKE_SOURCE_DIR}/Source/Bugs/TemplateNested.cpp
 )
+
+add_common_options()
 
 add_executable(${PROJECT_NAME} ${Bugs_Src} )
 
