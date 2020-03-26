@@ -9,6 +9,17 @@ string(APPEND CMAKE_CXX_FLAGS " /MP /GF")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+get_filename_component(TRESPASS_INSTALL_DIR "[HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\DreamWorks Interactive\\Trespasser;Installed Directory]" ABSOLUTE)
+if ( (NOT TRESPASS_INSTALL_DIR STREQUAL "/registry") )  #Found and read the registry entry, and it is valid
+    set(FOUND_TRESPASS_DIR TRUE)
+    set(CMAKE_INSTALL_PREFIX ${TRESPASS_INSTALL_DIR} CACHE STRING INTERNAL FORCE)
+else()
+    set(FOUND_TRESPASS_DIR FALSE)
+endif()
+
+#set(CMAKE_CONFIGURATION_TYPES Debug RelWithDebInfo Final CACHE STRING INTERNAL FORCE) 
+set(CMAKE_CONFIGURATION_TYPES Debug Release Final CACHE STRING INTERNAL FORCE) 
+#set(CMAKE_CONFIGURATION_TYPES "Debug;Release;Final" GLOBAL)
 
 include(cmake/CMakeCommon.cmake)
 
