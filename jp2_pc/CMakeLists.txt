@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.17)
 project(JP2_PC)
 
 set(CMAKE_SUPPRESS_REGENERATION true) #Suppress zero-check project
@@ -17,9 +17,7 @@ else()
     set(FOUND_TRESPASS_DIR FALSE)
 endif()
 
-#set(CMAKE_CONFIGURATION_TYPES Debug RelWithDebInfo Final CACHE STRING INTERNAL FORCE) 
 set(CMAKE_CONFIGURATION_TYPES Debug Release Final CACHE STRING INTERNAL FORCE) 
-#set(CMAKE_CONFIGURATION_TYPES "Debug;Release;Final" GLOBAL)
 
 include(cmake/CMakeCommon.cmake)
 
