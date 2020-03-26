@@ -51,6 +51,6 @@ add_library(${PROJECT_NAME} SHARED ${GroffExp_Inc} ${GroffExp_Src} ${GroffExp_Rs
 
 set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER Tools)
 
-target_link_libraries(${PROJECT_NAME}
+#target_link_libraries(${PROJECT_NAME}
 #TODO add dependencies here
-)
+#)
