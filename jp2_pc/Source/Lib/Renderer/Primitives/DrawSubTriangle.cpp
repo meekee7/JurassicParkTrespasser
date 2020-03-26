@@ -96,6 +96,10 @@
 #include "Lib/Sys/PerformanceCount.hpp"
 #include "Lib/Sys/DebugConsole.hpp"
 
+//This linker argument is needed for the self-modifying assembly code, TODO remove after removing assembly
+#pragma comment(linker, "/SECTION:SelfMod,ERW")
+//ERW = Execute,Read,Write
+
 #if VER_ASM
 
 static int			i_x_from;
