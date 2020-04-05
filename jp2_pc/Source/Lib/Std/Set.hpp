@@ -276,8 +276,7 @@ public:
 		}
 
 		//Copy constructor
-		CSetHelper(const CSetHelper&) {
-			*this = other;
+		CSetHelper(const CSetHelper& other) : CSetHelperConst(other) {
 		}
 
 		//**************************************************************************************
@@ -301,10 +300,8 @@ public:
 			if (&other == this)
 				return *this;
 
-
-			this->u4Mask = other.u4Mask;
-			const_cast<uint32&>(this->ru4Var) = other.ru4Var; //Very very awful hack to reassign const value
-
+			*this = static_cast<int>(other);
+			
 			return *this;
 		}
 

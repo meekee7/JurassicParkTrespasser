@@ -658,8 +658,8 @@ public:
 	forceinline bool operator !=(const CVector3<TR>& v3) const
 	{
 		//lint -save -e777
-		//  Yes, we really want to compare floats with == here.
-		return tX != v3.tX && tY != v3.tY && tZ != v3.tZ;
+		//  Yes, we really want to compare floats with != here.
+		return tX != v3.tX || tY != v3.tY || tZ != v3.tZ;
 		//lint -restore
 	}
 
