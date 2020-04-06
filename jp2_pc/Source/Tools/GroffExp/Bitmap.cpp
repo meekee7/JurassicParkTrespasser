@@ -1026,7 +1026,7 @@ CBitmapImage& CBitmapImage::operator =(CBitmapImage& bmi_src)
 		if (!bCreate(bmi_src.biBitmapInfo()))
 		{
 			// Bad situation has occurred.  We are out of heap memory.  Blow up for now.
-			assert(0);
+			Assert(0);
 		}
 
 		// Get a copy of the bitmap info for the host.

@@ -117,7 +117,7 @@
 #include "Geometry.hpp"
 #include "Lib/Sys/SysLog.hpp"
 #include "Bitmap.hpp"
-#include "Symtab.hpp"
+#include "Lib/Sys/Symtab.hpp"
 #include "Export.hpp"
 #include "GUIInterface.hpp"
 #include "Mathematics.hpp"
@@ -310,7 +310,7 @@ public:
 	//
 	void* Create
 	(
-		bool loading = false
+		BOOL loading = false
 	)
 	{ 
 		return new JP2Export;

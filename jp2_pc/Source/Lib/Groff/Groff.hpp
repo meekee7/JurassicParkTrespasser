@@ -52,44 +52,13 @@
 #include "Common.hpp"
 
 
-// Define the floating point 3D vector
-typedef struct 
-{
-	float	X;
-	float	Y;
-	float	Z;
-} fvector3;
-
-
-// Define the integer 3D vector
-typedef struct 
-{
-	uint	X;
-	uint	Y;
-	uint	Z;
-} uvector3;
-
-// Define the floating point 2D vector
-typedef struct 
-{
-	float	X;
-	float	Y;
-} fvector2;
-
-
-// Define the integer 2D vector
-typedef struct 
-{
-	uint	X;
-	uint	Y;
-} uvector2;
-
 #endif
 
 #include "Lib/Sys/SysLog.hpp"
 #include "Lib/Sys/SmartBuffer.hpp"
 #include "Lib/Groff/FileIO.hpp"
 #include "Lib/Groff/ObjectHandle.hpp"
+#include "Tools/GroffExp/ObjectDef.hpp"
 
 
 // Define the Groff file version number.
