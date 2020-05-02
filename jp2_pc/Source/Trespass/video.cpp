@@ -53,7 +53,7 @@ CVideoWnd::~CVideoWnd()
 
 void CVideoWnd::NextDirect()
 {
-    IDirectDrawSurface *    pSurface;
+    IDirectDrawSurface4 *    pSurface;
     HDC                     hdc;
     HRESULT                 hr;
 
@@ -63,7 +63,7 @@ void CVideoWnd::NextDirect()
         SmackColorRemap(m_pSmack,m_pBuf->Palette,m_pBuf->MaxPalColors,m_pBuf->PalType);
     }
 
-    pSurface = prasMainScreen->GetPrimarySurface();
+    pSurface = prasMainScreen->GetPrimarySurface4();
     do
     {
         hr = pSurface->GetDC(&hdc);
@@ -102,15 +102,15 @@ void CVideoWnd::NextNonDirect()
     LPBYTE      pbSrc;
     LPBYTE      pbDst;
     int         iSurface;
-    IDirectDrawSurface *    pSurface;
-    DDSURFACEDESC           dds;
+    IDirectDrawSurface4 *    pSurface;
+    DDSURFACEDESC2           dds;
     HRESULT                 hr;
 
 
     memset(&dds, 0, sizeof(dds));
     dds.dwSize = sizeof(dds);
 
-    pSurface = prasMainScreen->GetPrimarySurface();
+    pSurface = prasMainScreen->GetPrimarySurface4();
     do
     {
         hr = pSurface->Lock(NULL, 
@@ -176,7 +176,7 @@ void CVideoWnd::NextNonDirect()
     }
 
     m_pBuff->Unlock();
-    pSurface->Unlock(dds.lpSurface);
+    pSurface->Unlock(nullptr);
 }
 
 
@@ -285,11 +285,11 @@ BOOL CVideoWnd::Play(LPCSTR pszFile)
     //
 
     {
-        IDirectDrawSurface *    pSurface;
-        DDSURFACEDESC           dds;
+        IDirectDrawSurface4 *    pSurface;
+        DDSURFACEDESC2           dds;
         HRESULT                 hr;
 
-        pSurface = prasMainScreen->GetPrimarySurface();
+        pSurface = prasMainScreen->GetPrimarySurface4();
 		memset(&dds, 0, sizeof(dds));
 		dds.dwSize = sizeof(dds);
 
@@ -313,7 +313,7 @@ BOOL CVideoWnd::Play(LPCSTR pszFile)
             m_fDirect = FALSE;
         }
 
-        pSurface->Unlock(dds.lpSurface);
+        pSurface->Unlock(nullptr);
     }
 
     POINT screenSize = GetCurrentClientSize();
