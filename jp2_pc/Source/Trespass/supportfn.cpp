@@ -1119,7 +1119,7 @@ void ScreenCapture()
     int                     i;
     int                     j;
     char                    szFile[_MAX_PATH];
-    IDirectDrawSurface *    pSurface;
+    IDirectDrawSurface4 *    pSurface;
     HRESULT                 hr;
 
     pras24 = new CRasterDC(g_hwnd, 
@@ -1130,7 +1130,7 @@ void ScreenCapture()
 
 	// Save out a blank bitmap if a real one cannot be found.
 
-    pSurface = prasMainScreen->GetPrimarySurface();
+    pSurface = prasMainScreen->GetPrimarySurface4();
     hr = pSurface->GetDC(&hdcSrc);
 
 	SetStretchBltMode(hdcDst, COLORONCOLOR);
@@ -1187,13 +1187,13 @@ void MiddleMessage(UINT uiIDS)
 {
     char                    sz[50];
     HDC                     hdcSrc;
-    IDirectDrawSurface *    pSurface;
+    IDirectDrawSurface4 *    pSurface;
     HRESULT                 hr;
     RECT                    rc;
     COLORREF                cr;
     int                     iBkMode;
 
-    pSurface = prasMainScreen->GetPrimarySurface();
+    pSurface = prasMainScreen->GetPrimarySurface4();
     if (pSurface == NULL)
     {
         return;
