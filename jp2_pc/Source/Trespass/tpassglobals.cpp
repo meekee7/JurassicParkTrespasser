@@ -142,11 +142,11 @@ CTPassGlobals::~CTPassGlobals()
 
 void CTPassGlobals::SetupBackground()
 {
-    IDirectDrawSurface *    pSurface;
+    IDirectDrawSurface4 *    pSurface;
     HRESULT                 hr;
     HDC                     hdc;
 
-    pSurface = prasMainScreen->GetPrimarySurface();
+    pSurface = prasMainScreen->GetPrimarySurface4();
     hr = pSurface->GetDC(&hdc);
 
     delete m_prasBkgnd;
@@ -182,16 +182,16 @@ void CTPassGlobals::CaptureBackground(bool bBackbuffer /* = false */)
     HDC     hdcDst;
     HDC     hdcMini;
 
-    IDirectDrawSurface *    pSurface;
+    IDirectDrawSurface4 *    pSurface;
     HRESULT                 hr;
 
     if (bBackbuffer)
     {
-        pSurface = prasMainScreen->pddsDraw;
+        pSurface = prasMainScreen->pddsDraw4;
     }
     else
     {
-        pSurface = prasMainScreen->GetPrimarySurface();
+        pSurface = prasMainScreen->GetPrimarySurface4();
     }
 
     hr = pSurface->GetDC(&hdcSrc);
