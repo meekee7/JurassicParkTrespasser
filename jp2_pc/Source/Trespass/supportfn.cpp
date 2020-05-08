@@ -354,9 +354,9 @@ void CenterUIWindow(CUIWnd * puiwnd)
         return;
     }
 
-    vector<CUICtrl *>::iterator      i;
+    std::vector<CUICtrl *>::iterator      i;
 
-    for (i = puiwnd->m_vUICtrls.begin(); i < puiwnd->m_vUICtrls.end() && i; i++)
+    for (i = puiwnd->m_vUICtrls.begin(); i < puiwnd->m_vUICtrls.end() && *i; i++)
     {
         (*i)->GetRect(&rcClient);
         OffsetRect(&rcClient, x, y);
@@ -817,9 +817,12 @@ void MyBlt(LPBYTE pbSrc,
     }
     else
     {
+        //Use smaller size when buffer sizes do not match
+        size_t copysize = iSrcBytes == iDstBytes ? iWidthBytes : iWidth * std::min(iDstBytes, iSrcBytes);
+        
         for (y = 0; y < iHeight; y++)
         {
-            memcpy(pbDst, pbSrc, iWidthBytes);
+            memcpy(pbDst, pbSrc, copysize);
             pbDst += iDstPitch;
             pbSrc += iSrcPitch;
         }
@@ -932,15 +935,15 @@ CCamera* pcamGetCamera()
 
 void SetupGameScreen()
 {
-    int             iWidth;
-    int             iHeight;
+    POINT clientSize = GetCurrentClientSize();
+	
+    int             iWidth = clientSize.x;
+    int             iHeight = clientSize.y;
     BOOL            bSystemMem;
     RECT            rc;
     int             iGore;
 
-    bGetDimensions(iWidth, iHeight);
-	Video::SetToValidMode(iWidth, iHeight);
-	SetDimensions(iWidth, iHeight);
+	
     bSystemMem = bGetSystemMem();
 
     SetRect(&rc, 0, 0, iWidth, iHeight);
@@ -1316,6 +1319,14 @@ void ClearInputState(bool bCenterMouse /* = false */)
 
 	    SetCursorPos(point.x, point.y);
     }
+}
+
+POINT GetCurrentClientSize()
+{
+    RECT rect = { 0 };
+    GetClientRect(g_hwnd, &rect);
+    POINT result = { rect.right, rect.bottom };
+    return result;
 }
 
 

@@ -46,6 +46,8 @@ ${CMAKE_SOURCE_DIR}/Source/GUIApp/SoundPropertiesDlg.hpp
 ${CMAKE_SOURCE_DIR}/Source/GUIApp/StdAfx.h
 ${CMAKE_SOURCE_DIR}/Source/GUIApp/TerrainTest.hpp
 ${CMAKE_SOURCE_DIR}/Source/GUIApp/Toolbar.hpp
+${CMAKE_SOURCE_DIR}/Source/GUIApp/resource.h
+${CMAKE_SOURCE_DIR}/Source/GUIApp/DialogScrollBars.hpp
 )
 
 list(APPEND GUIApp_Src
@@ -138,4 +140,9 @@ target_link_libraries(${PROJECT_NAME}
     View
 
     lz32
+    winmm
+
+    dxguid
+    dsound
+    ddraw
 )

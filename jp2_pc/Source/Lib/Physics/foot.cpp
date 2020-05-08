@@ -1,7 +1,7 @@
 //	Foot BC for pelvic model...
 //	===========================
 
-#include <iostream.h>
+#include <iostream>
 #include "Common.hpp"
 #include "Lib/Sys/ConIO.hpp"
 #include "Pelvis.h"
@@ -1322,6 +1322,8 @@ extern bool	OKtoJUMP;
 					if (Pelvis_Jump_Voluntary)
 						NPhysImport::MakePlayerJumpNoise();
 					BioTag[pelvis][(RIGHT_FOOT+2)] = 0;
+
+					Pelvis_Jump_Voluntary = false; /* assignment part of an incomplete workaround for the jump bug */
 				}
 				else conPhysics << "JumpFailure: " << Xob[feetwet].Wz << " and slope: " << slohp << "\n";
 			}

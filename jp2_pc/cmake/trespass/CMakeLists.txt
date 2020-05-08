@@ -19,6 +19,7 @@ ${CMAKE_SOURCE_DIR}/Source/Trespass/token.h
 ${CMAKE_SOURCE_DIR}/Source/Trespass/tpassglobals.h
 ${CMAKE_SOURCE_DIR}/Source/Trespass/uidlgs.h
 ${CMAKE_SOURCE_DIR}/Source/Trespass/uiwnd.h
+${CMAKE_SOURCE_DIR}/Source/Trespass/resource.h
 )
 
 list(APPEND trespass_Src    
@@ -81,18 +82,22 @@ target_link_libraries(${PROJECT_NAME}
     View
 
     comctl32
-    lz32
+    lz32    
+    winmm
+
+    ddraw
+    dsound
+    dxguid
 
     ${CMAKE_SOURCE_DIR}/lib/smacker/SMACKW32.LIB
 )
 
 target_link_options(${PROJECT_NAME} PUBLIC "/SAFESEH:NO") #Needed only for old Smacker lib, remove when it gets replaced
-#target_link_options(${PROJECT_NAME} PUBLIC "/SECTION:SelfMod,ERW") #Needed for some of the assembly code in ScreenRenderDWI, ERW = Execute, Read, Write
 
 target_precompile_headers(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/Source/trespass/precomp.h)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX})
+if (FOUND_TRESPASS_DIR AND USE_TRESPASSER_DIRECTORY)
+    set_target_properties(${PROJECT_NAME} PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX})
 
-if (FOUND_TRESPASS_DIR)
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${PROJECT_NAME}> ${CMAKE_INSTALL_PREFIX}/$<TARGET_FILE_NAME:${PROJECT_NAME}>)
 endif()

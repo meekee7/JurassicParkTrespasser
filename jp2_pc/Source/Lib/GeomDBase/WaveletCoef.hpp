@@ -51,7 +51,7 @@
 #include "Lib/Math/FloatDef.hpp"
 #include "Lib/Transform/Vector.hpp"
 
-#include <function.h>
+#include <functional>
 
 #ifdef __MWERKS__
  // for <= if only given < and ==
@@ -308,9 +308,33 @@ namespace NMultiResolution
 		}
 
 
+		forceinline bool operator !=(CCoef cf) const
+		{
+			return iCoefVal != cf.iCoefVal;
+		}
+
+
 		forceinline bool operator <(CCoef cf) const
 		{
 			return iCoefVal < cf.iCoefVal;
+		}
+
+
+		forceinline bool operator <=(CCoef cf) const
+		{
+			return iCoefVal <= cf.iCoefVal;
+		}
+
+
+		forceinline bool operator >(CCoef cf) const
+		{
+			return iCoefVal > cf.iCoefVal;
+		}
+
+
+		forceinline bool operator >=(CCoef cf) const
+		{
+			return iCoefVal >= cf.iCoefVal;
 		}
 
 

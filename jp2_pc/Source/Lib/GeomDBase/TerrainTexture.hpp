@@ -40,7 +40,7 @@
 #ifndef HEADER_LIB_GEOMDBASE_TERRAINTEXTURE_HPP
 #define HEADER_LIB_GEOMDBASE_TERRAINTEXTURE_HPP
 
-#include <list.h>
+#include <list>
 #include "Lib/Std/BlockAllocator.hpp"
 #include "Lib/Transform/TransLinear.hpp"
 #include "Lib/GeomDBase/Shape.hpp"
@@ -58,6 +58,7 @@ namespace NMultiResolution
 {
 	class CQuadNodeTIN;
 	class CQuadRootTIN;
+	class CScheduleTerrainTextureItem;
 
 	//Default amount memory to allocate for terrain textures, in KB.
 	#define iDEFAULT_TERRAIN_TEXTURE_MEMORY_KB					1200
@@ -88,6 +89,7 @@ namespace NMultiResolution
 	private:
 		class CPriv;
 		friend class CPriv;
+		friend class CScheduleTerrainTextureItem;
 
 		friend class CBlockAllocator<CTextureNode>;
 		static CBlockAllocator<CTextureNode>::SStore stStore; // Storage for the types.
@@ -119,8 +121,8 @@ namespace NMultiResolution
 		CTexturePageManager::CRegionHandle rhAllocShadow;
 											// Allocation handle for the texture and static shadows.
 
-		list< CRectangle<> >    ltrcDirtyRects;
-		list< CRectangle<int> > ltrcPrevDirtyRects;
+		std::list< CRectangle<> >    ltrcDirtyRects;
+		std::list< CRectangle<int> > ltrcPrevDirtyRects;
 
 		//******************************************************************************************
 		//

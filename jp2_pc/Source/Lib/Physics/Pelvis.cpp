@@ -22,7 +22,7 @@
 #endif
 
 #include <memory.h>
-#include <iostream.h>
+#include <iostream>
  
 // The globals.
 EPelvisType	Pel_Usage[ NUM_PELVISES ];					//Type of pelvis here, if any.
@@ -230,7 +230,7 @@ extern bool		 bKontrol_Krouch[NUM_PELVISES];
 	
 				Pel[me][MOUTH][2] = CSPRING*(knees - Pel[me][MOUTH][0]) - CDAMP*Pel[me][MOUTH][1];
 	
-				if (Pel[me][MOUTH][0] < 0.09*(Pel_Data[me][14] - .2) ) {Pel[me][MOUTH][0] = .09*(Pel_Data[me][14] - .2); Pel[me][MOUTH][1] = 0;}
+				if (Pel[me][MOUTH][0] < 0.089*(Pel_Data[me][14] - .2) ) {Pel[me][MOUTH][0] = .09*(Pel_Data[me][14] - .2); Pel[me][MOUTH][1] = 0;}
 				if (Pel[me][MOUTH][0] > 1.1*(Pel_Data[me][14] - .2) ) {Pel[me][MOUTH][0] = 1.1*(Pel_Data[me][14] - .2); Pel[me][MOUTH][1] = 0;}
 
 				hat[0] *= Pel[me][MOUTH][0];
@@ -1161,7 +1161,20 @@ int				count_dracula = 0;
 
 				while (1) 
 				{
-
+					if (!std::isfinite(L))
+					{
+						dout << "FINITY BAILOUT IN PELVIS FOR L: " << L << std::endl;
+						//This is an incomplete workaround
+						
+						//Set to valid, normalised vector
+						Pel[i][(index + 0)][0] = 0.25f;
+						Pel[i][(index + 1)][0] = 0.25f;
+						Pel[i][(index + 2)][0] = 0.25f;
+						Pel[i][(index + 3)][0] = 0.25f;
+						
+						break;
+					}
+					
 					if ( fabs(L) < lag_max ) break;
 					count_dracula++;
 
@@ -1301,7 +1314,7 @@ extern SControlArm	ControlArm;
 extern bool	ArmUnderControl;
 extern float Pelvis_Set_Crouch;
 
-void DumpPelState(ostream& os)
+void DumpPelState(std::ostream& os)
 {
 #if VER_TEST
 
@@ -1311,24 +1324,24 @@ void DumpPelState(ostream& os)
 	if (Pel_Usage[i])
 	{
 		os	<<"Pelvis " <<i <<" Type=" <<(int)Pel_Usage[i]
-			<<endl;
+			<< std::endl;
 
-		os	<<"  Box_BC=" <<CPArray<int>(PELVIS_DOF, Pel_Box_BC[i]) <<endl;
+		os	<<"  Box_BC=" <<CPArray<int>(PELVIS_DOF, Pel_Box_BC[i]) << std::endl;
 
 		os	<<"  State=";
 		for (j = 0; j < PELVIS_DOF; j++)
 		{
 //			os <<endl <<"    " <<CPArray<float>(3, Pel[i][j]);
-			os <<endl <<"    ";
+			os << std::endl <<"    ";
 			for (k = 0; k < 3; k++)
 				os <<double(Pel[i][j][k]) <<" ";
 		}
 
-		os	<<"  History=" <<CPArray<float>(PELVIS_DOF, History[i]) <<endl;
+		os	<<"  History=" <<CPArray<float>(PELVIS_DOF, History[i]) << std::endl;
 
-		os	<<"  BioTag=" <<CPArray<float>(PELVIS_DOF, BioTag[i]) <<endl;
+		os	<<"  BioTag=" <<CPArray<float>(PELVIS_DOF, BioTag[i]) << std::endl;
 
-		os	<<"  Data=" <<CPArray<float>(PELVIS_PARAMETERS, Pel_Data[i]) <<endl;
+		os	<<"  Data=" <<CPArray<float>(PELVIS_PARAMETERS, Pel_Data[i]) << std::endl;
 
 		os	<<"  Hand_Drop_Flag="	<<Hand_Drop_Flag[i]
 			<<" Kontrol="			<<CPArray<float>(6, Kontrol[i])
@@ -1336,23 +1349,23 @@ void DumpPelState(ostream& os)
 			<<" bKontrol_Krouch="	<<bKontrol_Krouch[i]
 			<<" iKontrol_Jump="		<<iKontrol_Jump[i]
 			<<" asFootLatch="		<<(int)asFootLatch[i]
-			<<endl;
-		os	<<endl;
+			<< std::endl;
+		os	<< std::endl;
 	}
-	os	<<endl;
+	os	<< std::endl;
 
 	// Misc stuff.
 	os	<<"ControlArm: PosUrge=" <<ControlArm.fPosUrgency
 		<<" OrientUrge=" <<ControlArm.fOrientUrgency
 		<<" Curl=" <<ControlArm.fFingerCurl
 		<<" UnderControl=" <<ArmUnderControl
-		<<endl;
+		<< std::endl;
 
 	os	<<"Pelvis_Set_Crouch="	<<Pelvis_Set_Crouch
 		<<" Pelvis_Jump="	<<CPArray<float>(3, Pelvis_Jump)
-		<<endl;
+		<< std::endl;
 
-	os	<<endl;
+	os	<< std::endl;
 
 #endif
 }

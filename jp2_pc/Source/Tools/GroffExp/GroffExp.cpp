@@ -117,7 +117,7 @@
 #include "Geometry.hpp"
 #include "Lib/Sys/SysLog.hpp"
 #include "Bitmap.hpp"
-#include "Symtab.hpp"
+#include "Lib/Sys/Symtab.hpp"
 #include "Export.hpp"
 #include "GUIInterface.hpp"
 #include "Mathematics.hpp"
@@ -296,6 +296,7 @@ class CClassDesc: public ClassDesc
 {
 public:
 
+
 	//******************************************************************************************
 	//
 	int IsPublic
@@ -310,7 +311,7 @@ public:
 	//
 	void* Create
 	(
-		bool loading = false
+		BOOL loading = false
 	)
 	{ 
 		return new JP2Export;
@@ -2939,7 +2940,7 @@ uint uExtractFaces(Mesh& mesh, CMathematicsUtil& mutil_utils)
 	mutil_utils.slLogfile.Printf(mutil_utils.guiInterface.strGetString(IDS_FACE_NORMAL_TITLE), u_faces);
 
 	// Loop through all the faces in the list and get the face normals.
-	for (u_face = 0; u_face < u_faces; u_face++) 
+	for (uint u_face = 0; u_face < u_faces; u_face++) 
 	{
 		// Get the face normal.
 		Point3& pt3_normal = mesh.getFaceNormal(u_face);
@@ -2955,7 +2956,7 @@ uint uExtractFaces(Mesh& mesh, CMathematicsUtil& mutil_utils)
 	mutil_utils.slLogfile.Printf(mutil_utils.guiInterface.strGetString(IDS_VERTEX_NORMAL_TITLE), u_faces);
 
 	// Now get the vertex normal list.
-	for (u_face = 0; u_face < u_faces; u_face++) 
+	for (uint u_face = 0; u_face < u_faces; u_face++) 
 	{
 		// Get the face vertex indices.
 		Face& face = mesh.faces[u_face];
@@ -3078,7 +3079,7 @@ uint uExtractTextureVertices(Mesh& mesh, CMathematicsUtil& mutil_utils)
 	mutil_utils.slLogfile.Printf(mutil_utils.guiInterface.strGetString(IDS_TFACE_TITLE), i_face_count);
 
 	// Process the texture face list
-	for (i_i = 0; i_i < i_face_count; i_i++)
+	for (int i_i = 0; i_i < i_face_count; i_i++)
 	{
 		// Dump the texture face definition into the logfile.
 		mutil_utils.slLogfile.Printf(mutil_utils.guiInterface.strGetString(IDS_TFACE_DEFS), i_i, 
@@ -3713,3 +3714,18 @@ int JP2Export::DoExport(const TCHAR* tchr_export_filename, ExpInterface* pei_exp
 	// Set the GUI interface pointer to null.
 	return true;                                                  
 }
+
+
+//Global variables and functions declared elsewhere as extern
+//needed by the libraries
+bool bIsTrespasser = false;
+bool bUseReplayFile = false;
+bool bInvertMouse = false;
+bool bUseOutputFiles = false;
+unsigned int g_u4NotifyParam = 0;
+unsigned int u4LookupResourceString(int, char*, unsigned int) { return 0; }
+void LineColour(int, int, int) {}
+void* hwndGetMainHwnd() { return nullptr; }
+HINSTANCE hinstGetMainHInstance() { return nullptr; }
+void ResetAppData() {}
+PFNWORLDLOADNOTIFY g_pfnWorldLoadNotify = nullptr;

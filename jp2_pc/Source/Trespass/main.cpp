@@ -27,7 +27,7 @@
 #include "gblinc/buildver.hpp"
 #include "Lib/W95/Direct3DCards.hpp"
 #include "Version.hpp"
-
+#include <filesystem>
 
 #if TARGET_PROCESSOR == PROCESSOR_PENTIUM
 	#pragma message("Target build processor : Intel Pentium")
@@ -321,7 +321,7 @@ void TrespassExceptionCleanup()
 	// Remove the audio, we are about to quit.
 	delete CAudio::pcaAudio;
 
-	destroy(&prasMainScreen);
+	std::destroy_at(&prasMainScreen);
 
 	g_initDD.ReleaseAll();
 
@@ -344,55 +344,19 @@ void TrespassExceptionCleanup()
 
 bool ValidateDiskSpace(int iMB)
 {
-    bool                bRet;
-    char                szPath[_MAX_PATH];
-    char                szDrive[_MAX_PATH];
-    DWORD               dwSectorsPerCluster;
-    DWORD               dwBytesPerSector;
-    DWORD               dwFreeClusters;
-    DWORD               dwTotalClusters;
-    HANDLE              hFind;
-    WIN32_FIND_DATA     finddata;
-    DWORD               dwTotalSize;
-
+    char szPath[_MAX_PATH] = { '\0' };
     GetFileLoc(FA_INSTALLDIR, szPath, sizeof(szPath));
-    _splitpath(szPath, szDrive, NULL,NULL, NULL);
-    strcat(szDrive, "\\");
-    bRet = GetDiskFreeSpace(szDrive,
-                                  &dwSectorsPerCluster,
-                                  &dwBytesPerSector,
-                                  &dwFreeClusters,
-                                  &dwTotalClusters);
-    if (!bRet)
-    {
-        Trace(("ValidateDiskSpace() -- GetFreeDiskSpace error %i", 
-               GetLastError()));
-		return true;
-    }
-
-    dwTotalSize = 0;
-    hFind = FindFirstFile("*.swp", &finddata);
-    if (hFind != INVALID_HANDLE_VALUE)
-    {
-        do
-        {   
-            dwTotalSize += finddata.nFileSizeLow;
-        }
-        while (FindNextFile(hFind, &finddata));
-
-        FindClose(hFind);
-    }
-
-	Trace(("%s  %s\r\n%i %i %i %i\r\n%i", szDrive, szPath,
-		dwSectorsPerCluster, dwBytesPerSector, dwFreeClusters, dwTotalClusters, dwTotalSize));
-    // Check for enough free space for a save
-    if ((dwSectorsPerCluster * dwBytesPerSector * dwFreeClusters) + dwTotalSize < 
-        iMB * 1024 * 1024)
-    {
-        bRet = false;
-    }
-
-    return bRet;
+    
+    const auto diskstat = std::filesystem::space(szPath);
+    
+    //Existing swp files count as free space
+    std::uintmax_t swpFilesSize = 0;
+    for (const auto& entry : std::filesystem::directory_iterator("."))
+        if (entry.is_regular_file() && entry.path().extension() == ".swp")
+            swpFilesSize += entry.file_size();
+    
+    const std::uintmax_t neededBytes = iMB * static_cast<std::uintmax_t>(1024 * 1024);
+    return diskstat.free + swpFilesSize > neededBytes;
 }
 
 
@@ -420,7 +384,7 @@ int DoWinMain(HINSTANCE hInstance,
               LPSTR lpCmdLine,
               int nCmdShow)
 {
-    int                 iRet;
+    int                 iRet = 0;
     HANDLE              hMutex;
     int                 i;
     bool                bVideoCardChosen;
@@ -669,7 +633,7 @@ Cleanup:
 	if (prasMainScreen)
 	{
 		prasMainScreen->uRefs = 1;
-		destroy(&prasMainScreen);
+		std::destroy_at(&prasMainScreen);
 	}
 	g_initDD.ReleaseAll();
 
@@ -920,14 +884,18 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 	g_hwnd = NULL;
 
+    int windowWidth = 640;
+    int windowHeight = 480;
+    bGetDimensions(windowWidth, windowHeight);
+
     if (!CreateWindowEx(0,
                     g_szAppName,
                     sz,
                     WS_VISIBLE | WS_POPUP | WS_SYSMENU,
                     0,
                     0,
-                    640,
-                    480,
+                    windowWidth,
+                    windowHeight,
                     NULL,
                     NULL,
                     hInstance,

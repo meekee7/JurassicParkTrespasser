@@ -230,8 +230,8 @@
 			}
 
 			// Check the terrain polys.
-			list<CTerrainKnowledge>* pltk = &pbrBrain->pwvWorldView->ltkKnowledge;
-			list<CTerrainKnowledge>::iterator ptk = pltk->begin();
+			std::list<CTerrainKnowledge>* pltk = &pbrBrain->pwvWorldView->ltkKnowledge;
+			std::list<CTerrainKnowledge>::iterator ptk = pltk->begin();
 
 			for (; ptk != pltk->end(); ++ptk)
 			{
@@ -441,6 +441,9 @@
 			Assert(pGraph->bIsValidIndex(iStartNode));
 			Assert(pGraph->bIsValidIndex(iStopNode));
 
+			if (!pGraph->bIsValidIndex(iStartNode) || !pGraph->bIsValidIndex(iStopNode))
+				return;
+		
 			pGraph->ClearDistanceCache();
 
 			aasniInfo[iStartNode].dEstRemaining = pGraph->nNode(iStartNode).dEstimatedDistanceTo(pGraph->nNode(iStopNode));

@@ -264,7 +264,7 @@ namespace NMultiResolution
 
 		//******************************************************************************************
 		//
-		pair<CCoef, CCoef> prcfCheckCoefLimitsBranch() const;
+		std::pair<CCoef, CCoef> prcfCheckCoefLimitsBranch() const;
 		//
 		// Checks the coeficient 'Z' limits for this branch of the quad tree, in debug builds only.
 		//
@@ -523,7 +523,7 @@ namespace NMultiResolution
 
 
 	// Constant used in expressions to avoid crummy code generation by the fucked-up compiler.
-	static const CQuadNodeTIN::TState stMASK_TRI = Set(CQuadNodeTIN::estLEAF) + CQuadNodeTIN::estLEAF_COMBINE;
+	static const CQuadNodeTIN::TState stMASK_TRI = CQuadNodeTIN::TState() + CQuadNodeTIN::estLEAF + CQuadNodeTIN::estLEAF_COMBINE;
 
 	//******************************************************************************************
 	int CQuadNodeTIN::iEvaluateBranch(const CQuadRootTIN* pqntin_root)
@@ -1411,9 +1411,9 @@ namespace NMultiResolution
 
 
 	//******************************************************************************************
-	pair<CCoef, CCoef> CQuadNodeTIN::CPriv::prcfCheckCoefLimitsBranch() const
+	std::pair<CCoef, CCoef> CQuadNodeTIN::CPriv::prcfCheckCoefLimitsBranch() const
 	{
-		pair<CCoef, CCoef> prcf_lim(cfMAX, -cfMAX);
+		std::pair<CCoef, CCoef> prcf_lim(cfMAX, -cfMAX);
 
 		#if VER_DEBUG
 			if (bHasDescendants())
@@ -1422,7 +1422,7 @@ namespace NMultiResolution
 
 				for (int i_dsc = 0; i_dsc < 4; i_dsc++)
 				{
-					pair<CCoef, CCoef> prcf_ret = static_cast<CPriv*>(pqntin_dsc)->prcfCheckCoefLimitsBranch();
+					std::pair<CCoef, CCoef> prcf_ret = static_cast<CPriv*>(pqntin_dsc)->prcfCheckCoefLimitsBranch();
 
 					prcf_lim.first  = Min(prcf_ret.first,  prcf_lim.first);
 					prcf_lim.second = Max(prcf_ret.second, prcf_lim.second);

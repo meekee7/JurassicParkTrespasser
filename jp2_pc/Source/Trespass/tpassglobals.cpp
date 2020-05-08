@@ -36,6 +36,7 @@ const float                 g_afGamma[10] =
     0.0f,
 };
 
+void LineColour(int, int, int) {}
 
 uint32 __stdcall TPassLoadNotify(uint32 dwContext, 
                                  uint32 dwParam1, 
@@ -114,9 +115,8 @@ BOOL GetNextAvailSaveName(LPSTR pszFileName, int icFileLen, int iBaseExt)
 
 
 CTPassGlobals::CTPassGlobals()
+	: m_apsamRandoms{ nullptr }
 {
-    int     i;
-
     m_prasBkgnd = NULL;
     m_prasMiniBkgnd = NULL;
 
@@ -125,11 +125,6 @@ CTPassGlobals::CTPassGlobals()
     m_psamButton = NULL;
 	bInGame = false;
 	bHardReset = false;
-
-    for (i = 0; i < 14; i++)
-    {
-        m_apsamRandoms[i] = NULL;
-    }
 }
 
 
@@ -344,7 +339,7 @@ void CTPassGlobals::HardScreenReset(BOOL b_reset_world)
 	if (b_reset_world)
 		wWorld.Reset();
 	prasMainScreen->uRefs = 1;
-	destroy(&prasMainScreen);
+	std::destroy_at(&prasMainScreen);
 	g_initDD.ReleaseAll();
 	g_initDD.BaseInit();
 

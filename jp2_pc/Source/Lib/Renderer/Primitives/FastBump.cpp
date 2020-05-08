@@ -94,7 +94,7 @@
 #include <string.h>
 #include <memory.h>
 #include <math.h>
-#include <map.h>
+#include <map>
 
 #define bAXIS_SWAP			(1)
 
@@ -984,7 +984,8 @@ rptr<CBumpMap> pbumpCreateUniqueBumpap
 				// the range 0..iWidth
 				i_x_src += (-i_x_src*pbump->iWidth);
 			}
-			pbang[i_x].br = pbang_src[i_x_src % pbump->iWidth].br;
+			if (pbump->iWidth != 0)
+				pbang[i_x].br = pbang_src[i_x_src % pbump->iWidth].br;
 		}
 	}
 
@@ -1238,6 +1239,10 @@ void ApplyCurves(rptr<CMesh> pmsh)
 
 			// did we get a bump map from the above cast
 			Assert(pbump);
+			if (!pbump) {
+				pi.pmpPolygon()->pmx3ObjToTexture = SwapMatrices.pmx3GetMatrix(pi.d3Normal());
+				continue;
+			}
 
 			// Make a unique raster for the segement of the bumpmap to be curved.
 			rptr<CBumpMap> pbump_new = pbumpCreateUniqueBumpap
@@ -1903,7 +1908,7 @@ void MatrixFromHash
 //
 // Set of bump map matrices.
 //
-typedef map< int, CMatrix3<>*, less<int> > TMapMatrixHash;
+typedef std::map< int, CMatrix3<>*, std::less<int> > TMapMatrixHash;
 TMapMatrixHash* pmapBumpMatrices = 0;
 
 

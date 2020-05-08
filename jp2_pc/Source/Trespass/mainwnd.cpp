@@ -83,6 +83,8 @@ BOOL CMainWnd::InitSurface()
 	// set all performance timers to read clock ticks
 	iPSInit();
 
+    POINT screenSize = GetCurrentClientSize();
+
 	if (!prnshMain)
 	{
 		prnshMain = new CRenderShell(m_hwnd, g_hInst, false);
@@ -91,13 +93,13 @@ BOOL CMainWnd::InitSurface()
 			return FALSE;
 		}
 
-		if (!prnshMain->bCreateScreen(640, 480, 16, bGetSystemMem()))
+		if (!prnshMain->bCreateScreen(screenSize.x, screenSize.y, 16, bGetSystemMem()))
 		{
 			return FALSE;
 		}
 	}
 
-    SetRect(&rc, 0, 0, 640, 480);
+    SetRect(&rc, 0, 0, screenSize.x, screenSize.y);
     ClipCursor(&rc);
 
 	if (!m_pUIMgr)
@@ -377,7 +379,7 @@ void CMainWnd::OnActivateApp(HWND hwnd, BOOL fActivate, DWORD dwThreadId)
 
 			// Delete renderer stuff if required.
 			if (g_CTPassGlobals.bInGame)
-				destroy(&prasMainScreen);
+				std::destroy_at(&prasMainScreen);
         }
 
         m_pUIMgr->m_bActive = FALSE;
@@ -434,9 +436,7 @@ void CMainWnd::OnActivateApp(HWND hwnd, BOOL fActivate, DWORD dwThreadId)
 
 void CMainWnd::OnTimer(HWND hwnd, UINT id)
 {
-    vector<CUIWnd *>::iterator      i;
-
-    for (i = m_pUIMgr->m_vUIWnd.end() - 1; i >= m_pUIMgr->m_vUIWnd.begin(); i--)
+    for (auto i = m_pUIMgr->m_vUIWnd.rbegin(); i != m_pUIMgr->m_vUIWnd.rend(); i++)
     {
         if (*i && !(*i)->m_bExitWnd)
         {

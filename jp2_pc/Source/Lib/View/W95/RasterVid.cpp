@@ -101,6 +101,7 @@
 
 extern  bool bIsTrespasser;
 
+constexpr bool forceWindowMode = true; //Fullscreen is currently broken TODO repair
 
 //**********************************************************************************************
 //
@@ -320,7 +321,7 @@ private:
 		iWidthFront  = i_width;
 		iHeightFront = i_height;
 
-		if (i_bits) 
+		if (i_bits && !forceWindowMode)
 		{		
 			// Go fullscreen.  We need to call 2 DD functions to do this.
 			DirectDraw::err = DirectDraw::pdd->SetCooperativeLevel(hwnd, 
@@ -1329,7 +1330,7 @@ rptr<CRaster> prasReadBMP(const char* str_bitmap_name, bool b_vid)
 		// Release Direct3D before doing anything.
 		d3dDriver.Uninitialize();
 
-		if (bFullScreen)
+		if (!forceWindowMode && bFullScreen)
 		{
 			// Return to Windows screen if necessary.
 			if (DirectDraw::pdd4)
@@ -1767,7 +1768,7 @@ rptr<CRaster> prasReadBMP(const char* str_bitmap_name, bool b_vid)
 		CDDSize<DDSURFACEDESC2> sd;
 		HRESULT hres;
 
-		DWORD dw_flags = DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE;
+		DWORD dw_flags = forceWindowMode ? DDSCL_NORMAL : DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE;
 		DDDEVICEIDENTIFIER dddevid;
 		bool b_identifier_found = true;
 

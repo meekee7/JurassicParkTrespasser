@@ -43,7 +43,7 @@
 #include "Lib/Loader/Loader.hpp"
 #include "Lib/Sys/Timer.hpp"
 #include "Lib/Audio/SoundDefs.hpp"
-#include "list.h"
+#include <list>
 
 //
 // Class definitions.
@@ -146,7 +146,7 @@ public:
 	(
 		const CGroffObjectName*	pgon,		// Object to load.
 		CLoadWorld*				pload,		// The loader.
-		const CHandle&			h_object,	// handle of object in value table.
+		const ::CHandle&			h_object,	// handle of object in value table.
 		CValueTable*			pvtable,	// Value Table.
 		const CInfo*			pinfo		// The info to copy.  Create a new one if 0.
 	);
@@ -194,7 +194,7 @@ public:
 	// current object being loaded until the next pass.
 	static bool bValidateGunProperties
 	(
-		const CHandle&			h_object,	// handle of object in value table.
+		const ::CHandle&			h_object,	// handle of object in value table.
 		CValueTable*			pvtable,	// Value Table.
 		CLoadWorld*				pload		// The loader.
 	);
@@ -203,7 +203,7 @@ public:
 
 //*********************************************************************************************
 //
-typedef list<CMuzzleFlash*> TMuzzleFlashList;
+typedef std::list<CMuzzleFlash*> TMuzzleFlashList;
 // prefix: mf
 //**************************************
 
@@ -222,7 +222,7 @@ public:
 	(
 		const CGroffObjectName*	pgon,		// Object to load.
 		CLoadWorld*				pload,		// The loader.
-		const CHandle&			h_object,	// handle of object in value table.
+		const ::CHandle&			h_object,	// handle of object in value table.
 		CValueTable*			pvtable,	// Value Table.
 		const CInfo*			pinfo		// The info to copy.  Create a new one if 0.
 	);

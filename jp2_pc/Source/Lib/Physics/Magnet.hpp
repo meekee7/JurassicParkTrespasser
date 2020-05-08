@@ -35,7 +35,7 @@
 #ifndef HEADER_LIB_PHYSICS_MAGNET_HPP
 #define HEADER_LIB_PHYSICS_MAGNET_HPP
 
-#include <list.h>
+#include <list>
 #include "Lib/EntityDBase/PhysicsInfo.hpp"
 
 #define VER_PARTITION_MAGNETS VER_TEST
@@ -128,7 +128,7 @@ public:
 	//
 	static const CMagnet* pmagFindShared
 	(
-		const CHandle&	h, 
+		const ::CHandle&	h,
 		CObjectValue*	poval_cmagnet, 
 		CValueTable*	pvt, 
 		CLoadWorld*		pload
@@ -158,7 +158,7 @@ public:
 	(
 		CGroffObjectName* pgon,
 		CLoadWorld*	pload,
-		const CHandle& h,
+		const ::CHandle& h,
 		CValueTable* pvt
 	);
 	//
@@ -170,7 +170,7 @@ public:
 	(
 		CGroffObjectName* pgon,
 		CLoadWorld*	pload,
-		const CHandle& h,
+		const ::CHandle& h,
 		CValueTable* pvt
 	);
 	//
@@ -513,7 +513,7 @@ namespace NMagnetSystem
 	void GetAttachedMagnets
 	(
 		CInstance* pins,			// An instance potentially in a magnet group.
-		list<CMagnetPair*>* plsmp	// Returns list of magnet pairs attaching this instance
+		std::list<CMagnetPair*>* plsmp	// Returns list of magnet pairs attaching this instance
 									// to others.
 	);
 	//

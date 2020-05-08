@@ -77,7 +77,7 @@
  * 
  **********************************************************************************************/
 
-#include "list.h"
+#include <list>
 #include "Common.hpp"
 #include "Lib/W95/Direct3D.hpp"
 #include "Lib/View/RasterD3D.hpp"
@@ -117,7 +117,7 @@
 
 //#include "Config.hpp"
 //#define TARGET_PROCESSOR PROCESSOR_PENTIUM
-//#define VER_ASM			0
+#define VER_ASM			0
 
 #include "AsmSupport.hpp"
 #include "Lib/Std/PrivSelf.hpp"
@@ -130,7 +130,7 @@ extern CProfileStat		psWaterStep;
 //
 // Keep a list of currently active water.
 //
-typedef list<CEntityWater*> TWaterList;
+typedef std::list<CEntityWater*> TWaterList;
 TWaterList wlWaters;
 
 
@@ -195,7 +195,7 @@ namespace
 
 	//*********************************************************************************************
 	//
-	class CReflectTable: public CFloatTableRound<int, 512, -1.0, +1.0>
+	class CReflectTable: public CFloatTableRound<int, 512, -1, +1>
 	//
 	// Prefix: rfltab
 	//
@@ -241,7 +241,7 @@ namespace
 
 	//*********************************************************************************************
 	//
-	class CPixelReflectTable: public CFloatTableRound<uint16, 512, -1.0, +1.0>
+	class CPixelReflectTable: public CFloatTableRound<uint16, 512, -1, +1>
 	//
 	// Prefix: rfltaba
 	//
@@ -2011,7 +2011,7 @@ SKIP_LOOP:
 
 		// Do every odd element relative to the first calculated element.
 		// Interpolate water in x.
-		for (i_x = i_x_start; i_x < i_x_end - 1; ++i_x)
+		for (int i_x = i_x_start; i_x < i_x_end - 1; ++i_x)
 		{
 			// Get the interpolated intensity value.
 			pau1[i_x * 2 + 1] = (pau1[i_x * 2] + pau1[i_x * 2 + 2]) >> 1;

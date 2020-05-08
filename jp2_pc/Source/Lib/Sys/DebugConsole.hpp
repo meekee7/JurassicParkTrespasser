@@ -56,8 +56,8 @@
 
 // Declare the debug console interface.
 
-#include <iostream.h>
-#include <fstream.h>
+#include <iostream>
+#include <fstream>
 #include "crtdbg.h"
 
 #pragma warning(disable:4237)
@@ -83,7 +83,7 @@ extern void __cdecl dprintf(char* str,...);
 
 //**********************************************************************************************
 //
-class dbgstreambuf : public streambuf
+class dbgstreambuf : public std::streambuf
 {
 public:
 	//******************************************************************************************
@@ -111,7 +111,7 @@ public:
 	char					buf[1028];			// buffer to accumulate the text
 	uint32					u4Off;				// current offset in the above buffer
 	bool					bFile;
-	ofstream				dbgfile;			// ofstream for the debuglog if in joint mode
+	std::ofstream			dbgfile;			// ofstream for the debuglog if in joint mode
 #endif
 };
 
@@ -135,13 +135,15 @@ public:
 //**********************************************************************************************
 // global dout that is identical to cout but for the console debug window
 #if (DEBUG_OUT == DEBUG_OUTPUT_FILE)
-extern ofstream	dout;
+extern std::ofstream dout;
 #else
-extern ostream	dout;
+extern std::ostream	dout;
 #endif
 
 // #if VER_TEST
 #else
+
+#include <iostream>
 
 // Make null versions of the print functions.
 
@@ -169,6 +171,12 @@ class nullstream
 template<class T> inline nullstream& operator<<(nullstream& ns, const T&)
 {
 	return ns;
+}
+
+//This overload makes it possible to use std::endl with nullstream
+inline nullstream& operator<<(nullstream& ns, decltype(std::endl<char, std::char_traits<char>>))
+{
+    return ns;
 }
 
 // The dummy debug stream.
