@@ -251,7 +251,7 @@ void CPackedRaster::InitQuadTree
 	tqtPackQuadTree.tqnRoot.u1YOrg		= 0;
 
 	tqtPackQuadTree.tqnRoot.u1Texture	= 0;
-	tqtPackQuadTree.tqnRoot.ptqnLink	= NULL;
+	tqtPackQuadTree.tqnRoot.ptqnLink.reset();
 
 	// no children, the children of a node are not allocated until the node needs to be split
 	// and at that point all 4 children are created.
@@ -596,7 +596,7 @@ STextureQuadNode* CPackedRaster::ptqnAddRaster
 
 		// fill in the info within the quad node
 		ptqn->u1Texture = 1;
-		ptqn->ptqnLink = NULL;
+		ptqn->ptqnLink.reset();
 
 		return ptqn;
 	}
@@ -735,7 +735,7 @@ STextureQuadNode* CPackedRaster::ptqnAddSubTexture
 						{
 							KillNode(aptqn_adjcopy[ u4_list[i] ], i_size ,false);
 							aptqn_adjcopy[ u4_list[i] ]->u1Texture = 1;
-							aptqn_adjcopy[ u4_list[i] ]->ptqnLink = aptqn_adjcopy[ u4_list[i+1] ];
+							aptqn_adjcopy[ u4_list[i] ]->ptqnLink = aptqn_adjcopy[ u4_list[i+1] ]->weak_from_this();
 						}
 					}
 					else
@@ -860,10 +860,10 @@ void CPackedRaster::DivideNode
 	ptqn->ptqnSubNode[3]->u1Texture = 0;
 
 	// zero all the texture links
-	ptqn->ptqnSubNode[0]->ptqnLink = 0;
-	ptqn->ptqnSubNode[1]->ptqnLink = 0;
-	ptqn->ptqnSubNode[2]->ptqnLink = 0;
-	ptqn->ptqnSubNode[3]->ptqnLink = 0;
+	ptqn->ptqnSubNode[0]->ptqnLink.reset();
+	ptqn->ptqnSubNode[1]->ptqnLink.reset();
+	ptqn->ptqnSubNode[2]->ptqnLink.reset();
+	ptqn->ptqnSubNode[3]->ptqnLink.reset();
 
 	// set the width of all the new nodes
 	ptqn->ptqnSubNode[0]->u1Size = ((ptqn->u1Size+1)>>1)-1;
@@ -1062,12 +1062,18 @@ void CPackedRaster::Delete
 	Assert (u4_xpos<256);
 	Assert (u4_ypos<256);
 
-	ptqnDel = ptqn_last = NULL;
+	ptqnDel.reset();
+	ptqn_last = NULL;
 	ptqnStart = NULL;
 
 	bRemoveQuadNodeAndCompact(&tqtPackQuadTree.tqnRoot,u4_xpos,u4_ypos,tqtPackQuadTree.u4ParentSize);
 
-	while ((ptqnDel!=ptqnStart)  && (ptqnDel!=NULL))
+	const auto condition = [&]()
+	{
+		const auto locked = ptqnDel.lock();
+		return locked.get() != ptqnStart && locked;
+	};
+	while (condition())
 	{
 		bRemoveQuadNodeAndCompact(&tqtPackQuadTree.tqnRoot,u1DelXPos,u1DelYPos,tqtPackQuadTree.u4ParentSize);
 	}
@@ -1129,7 +1135,6 @@ void CPackedRaster::KillNode
 			if (b_delete)
 			{
 				MEMLOG_SUB_ADRSIZE(emlTextureManQuad,tqtPackQuadTree.anltFree[i_size].aptqn[u4]);
-				deletedNodes.insert(tqtPackQuadTree.anltFree[i_size].aptqn[u4]);
 				delete tqtPackQuadTree.anltFree[i_size].aptqn[u4];
 			}
 
@@ -1228,7 +1233,7 @@ bool CPackedRaster::bRemoveQuadNodeAndCompact
 
 					// make this node free
 					ptqn->u1Texture = 0;
-					ptqn->ptqnLink = NULL;			// just to be safe!
+					ptqn->ptqnLink.reset();			// just to be safe!
 
 					// add us to the free list if there is room in the current free list
 					if (tqtPackQuadTree.anltFree[i_size].u1Count < tqtPackQuadTree.anltFree[i_size].u1MaxCount)
@@ -1270,7 +1275,7 @@ bool CPackedRaster::bRemoveQuadNodeAndCompact
 			// make this node free
 			ptqn->u1Texture = 0;
 			ptqnDel = ptqn->ptqnLink;
-
+			
 			if (ptqnStart == NULL)
 			{
 				ptqnStart = ptqn;
@@ -1281,18 +1286,12 @@ bool CPackedRaster::bRemoveQuadNodeAndCompact
 			// the last node may point to the first node if it is a rectangle and the block
 			// for the first node may have been deleted and paged out when the last node
 			// references it.
-			if (deletedNodes.find(ptqnDel) != deletedNodes.end())
+			if (const auto locked = ptqnDel.lock(); locked)
 			{
-				//Pointer is known to have been deleted, do not use
-				dout << "applied dead texture node link correction" << std::endl;
-				ptqnDel = nullptr;
+				u1DelXPos = locked->u1XOrg;
+				u1DelYPos = locked->u1YOrg;
 			}
-			else if (ptqnDel)
-			{
-				u1DelXPos = ptqnDel->u1XOrg;
-				u1DelYPos = ptqnDel->u1YOrg;
-			}
-			ptqn->ptqnLink = NULL;
+			ptqn->ptqnLink.reset();
 
 
 			// add us to the free list if there is room
@@ -1423,9 +1422,9 @@ STextureQuadNode* CPackedRaster::ptqnAddTextureAtPosition
 	int i;
 	for (i = 0; i<i_count-1; i++)
 	{
-		ptqn_sub[i]->ptqnLink = ptqn_sub[i+1];
+		ptqn_sub[i]->ptqnLink = ptqn_sub[i+1]->weak_from_this();
 	}
-	ptqn_sub[i]->ptqnLink = ptqn_sub[0];
+	ptqn_sub[i]->ptqnLink = ptqn_sub[0]->weak_from_this();
 
 	return ptqn;
 }
@@ -1498,8 +1497,8 @@ STextureQuadNode* CPackedRaster::ptqnInsertNodeAtPosition
 	// packer and mark it as used.
 	RemoveFromFreeList(ptqn,i_current_size);
 	ptqn->u1Texture = (uint8)true;;
-	ptqn->ptqnLink = NULL;
-
+	ptqn->ptqnLink.reset();
+	
 	return ptqn;
 }
 

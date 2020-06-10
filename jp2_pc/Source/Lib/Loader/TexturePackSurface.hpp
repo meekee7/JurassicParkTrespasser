@@ -63,7 +63,7 @@
 #define HEADER_TEXTUREPACKSURFACE_HPP
 
 #include "Lib/View/Raster.hpp"
-#include <unordered_set>
+#include <memory>
 
 #pragma pack(push,1)
 
@@ -97,7 +97,7 @@ enum ETexturePackTypes
 //**********************************************************************************************
 // A single node of the packed raster quad tree
 //
-struct STextureQuadNode
+struct STextureQuadNode : public std::enable_shared_from_this<STextureQuadNode>
 // prefix: tqn
 {
 	uint8				u1Size;
@@ -105,16 +105,16 @@ struct STextureQuadNode
 	uint8				u1YOrg;
 	uint8				u1Texture;
 
-	STextureQuadNode*	ptqnLink;
+	std::weak_ptr<STextureQuadNode>	ptqnLink;
 	STextureQuadNode*	ptqnSubNode[4];
 
 	STextureQuadNode()
+		:ptqnLink()
 	{
 		ptqnSubNode[0] = NULL;
 		ptqnSubNode[1] = NULL;
 		ptqnSubNode[2] = NULL;
 		ptqnSubNode[3] = NULL;
-		ptqnLink = NULL;
 		u1Texture = 0;
 	};
 };
@@ -260,13 +260,11 @@ protected:
 	STextureQuadNode*		atqnSizeDivide1[u4FREE_LIST_ENTRIES_DIVIDE1];
 	STextureQuadNode*		atqnSizeDivide2[u4FREE_LIST_ENTRIES_DIVIDE2];
 
-	STextureQuadNode*		ptqnDel;
+	std::weak_ptr<STextureQuadNode>	ptqnDel;
 	STextureQuadNode*		ptqnStart;
 	uint32					u4SmallestAllocation;
 	uint8					u1DelXPos;
 	uint8					u1DelYPos;
-
-	std::unordered_set<STextureQuadNode*> deletedNodes;
 
 	//*****************************************************************************************
 	void InitQuadTree
