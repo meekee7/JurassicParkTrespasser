@@ -84,6 +84,7 @@
 #define REG_KEY_DATA_DRIVE          "Data Drive"
 #define REG_KEY_INSTALLED           "Installed"
 #define REG_KEY_INSTALLED_DIR       "Installed Directory"
+#define REG_KEY_FIRST_LEVEL         "First Level"
 #define REG_KEY_NOVIDEO             "NoVideo"
 #define REG_KEY_AUDIO_LEVEL         "AudioLevel"
 #define REG_KEY_AUDIO_EFFECT        "PlaySFX"
@@ -112,8 +113,8 @@
 
 // Setup the default values with #defines for the necessary items
 #define DEFAULT_REG_NOVIDEO         FALSE
-#define DEFAULT_SIZE_WIDTH          320
-#define DEFAULT_SIZE_HEIGHT         240
+#define DEFAULT_SIZE_WIDTH          640
+#define DEFAULT_SIZE_HEIGHT         480
 #define DEFAULT_FULLSCREEN          TRUE
 #define DEFAULT_D3D                 FALSE
 #define DEFAULT_SYSTEMMEM           FALSE
@@ -502,5 +503,10 @@ void SetPageManaged
 //
 //**************************************
 
+void SetSettingToDefault(const char* setting);
+
+void SetAllSettingsToDefault();
+
+void SetKeyMappingToDefault();
 
 #endif // LIB_SYS_REGINIT_HPP

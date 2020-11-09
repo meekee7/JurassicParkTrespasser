@@ -153,7 +153,11 @@ void SetProperWorkingDir()
     GetModulePath(g_hInst, szPath, sizeof(szPath));
 #endif
 	Trace(("%s", szPath));
-    SetCurrentDirectory(szPath);
+
+	//SetCurrentDirectory would default to C:\ with empty input
+    //Backslash was appended by GetFileLoc
+	if (szPath[0] != '\0' && strcmp(szPath, "\\") != 0) 
+		SetCurrentDirectory(szPath);
 }
 
 
@@ -431,8 +435,6 @@ int DoWinMain(HINSTANCE hInstance,
     bUseGDIForMessages = false;
 
     OpenKey();
-	if (bMustSetNVidiaRegistry())
-		SetNVidiaRegistry();
 
     SetProperWorkingDir();
 
@@ -459,8 +461,11 @@ int DoWinMain(HINSTANCE hInstance,
     //
     if (!GetRegValue(REG_KEY_INSTALLED, FALSE))
     {
-        ErrorDlg(g_hwnd, IDS_NOT_INSTALLED);
-        goto Error;
+        SetAllSettingsToDefault();
+    	
+        std::filesystem::path path = std::filesystem::current_path();
+        SetRegString(REG_KEY_DATA_DRIVE, path.string().c_str());
+        SetRegString(REG_KEY_INSTALLED_DIR, path.string().c_str());
     }
 
 	// Check existance of file system
@@ -677,8 +682,7 @@ Cleanup:
 
 	// BUGBUG:  Close out file system
 
-	RestoreNVidiaRegistry();
-    CloseKey(b_change_safemode);
+	CloseKey(b_change_safemode);
 	
     return iRet;
 
@@ -899,7 +903,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     bGetDimensions(windowWidth, windowHeight);
 
     DWORD style = WS_VISIBLE | WS_POPUP | WS_SYSMENU;
-    if (GetWindowModeActual() == WindowMode::FRAMED)
+    if (GetWindowModeConfigured() == WindowMode::FRAMED)
         style |= WS_OVERLAPPEDWINDOW;
 	
     if (!CreateWindowEx(0,

@@ -30,9 +30,9 @@
 #include "..\Lib\Sys\reg.h"
 #include "..\lib\sys\reginit.hpp"
 #include "keyremap.h"
+#include "Lib/Sys/DWSizeStruct.hpp"
 
 
-#define FIRST_LEVEL_NAME "BE.SCN"
 
 extern HINSTANCE    g_hInst;
 extern HWND		    g_hwnd;
@@ -279,8 +279,9 @@ void CMainScreenWnd::UIButtonUp(CUIButton * pbutton)
                 CVideoWnd   video(m_pUIMgr);
 
                 video.Play("menu\\newgame");
+                m_pUIMgr->Detach(&video);
 
-                iRet = g_CTPassGlobals.LoadLevel(FIRST_LEVEL_NAME);
+                iRet = g_CTPassGlobals.LoadLevel(GetFirstLevelName().c_str());
 
                 if (iRet >= 0)
                 {
@@ -498,7 +499,7 @@ void CLoaderWnd::InnerWindowLoop(bool bPaint)
     IDirectDrawSurface4 *   pSurface;
     HRESULT                 hr;
     CUIWnd *                puiwnd;
-    DDBLTFX                 ddfx;
+    CDDSize<DDBLTFX>        ddfx;
 
     PreLoopCall();
 
@@ -512,9 +513,6 @@ void CLoaderWnd::InnerWindowLoop(bool bPaint)
         // Draw everything to the back buffer
         puiwnd = m_pUIMgr->GetActiveUIWnd();
         puiwnd->DrawIntoSurface(prasMainScreen.ptPtrRaw(), &m_pUIMgr->m_rcInvalid);
-
-        memset(&ddfx, 0, sizeof(ddfx));
-        ddfx.dwSize = sizeof(ddfx);
 
         ddfx.dwROP = SRCCOPY;
         ddfx.dwDDFX = DDBLTFX_NOTEARING;
@@ -616,6 +614,8 @@ void CLoaderWnd::SetupBackgroundImage()
 
     // Load the image.
     pras = ReadAndConvertBMP(szName, false);
+    if (!pras)
+        return;
 
     SetRect(&rcImage, 0, 0, pras->iWidth, pras->iHeight);
 

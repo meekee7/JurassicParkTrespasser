@@ -24,6 +24,7 @@
 #include "video.h"
 #include "..\Lib\Sys\reg.h"
 #include "..\lib\sys\reginit.hpp"
+#include "Lib/Sys/DWSizeStruct.hpp"
 
 
 extern HINSTANCE    g_hInst;
@@ -103,12 +104,8 @@ void CVideoWnd::NextNonDirect()
     LPBYTE      pbDst;
     int         iSurface;
     IDirectDrawSurface4 *   pSurface;
-    DDSURFACEDESC2          dds;
+    CDDSize<DDSURFACEDESC2> dds;
     HRESULT                 hr;
-
-
-    memset(&dds, 0, sizeof(dds));
-    dds.dwSize = sizeof(dds);
 
     pSurface = prasMainScreen->GetPrimarySurface();
     do
@@ -262,7 +259,8 @@ BOOL CVideoWnd::Play(LPCSTR pszFile)
 #ifdef _DEBUG
         dprintf("CVideoWnd::Play() -- Unable to load/find %s", sz);
 #endif
-        return FALSE;
+        m_pUIMgr->Detach(this);
+    	return FALSE;
     }
 
     m_pSmack = SmackOpen((char *)hfile, 
@@ -270,6 +268,8 @@ BOOL CVideoWnd::Play(LPCSTR pszFile)
                          SMACKAUTOEXTRA);
     if (!m_pSmack)
     {
+        m_pUIMgr->Detach(this);
+        CloseHandle(hfile);
         return FALSE;
     }
 
@@ -286,13 +286,11 @@ BOOL CVideoWnd::Play(LPCSTR pszFile)
 
     {
         IDirectDrawSurface4 *   pSurface;
-        DDSURFACEDESC2          dds;
+        CDDSize<DDSURFACEDESC2> dds;
         HRESULT                 hr;
 
         pSurface = prasMainScreen->GetPrimarySurface();
-		memset(&dds, 0, sizeof(dds));
-		dds.dwSize = sizeof(dds);
-
+		
 		do
 		{
 			hr = pSurface->Lock(NULL, 
